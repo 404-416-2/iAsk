@@ -6,6 +6,8 @@ public class UserQuesBean {
 	private int uid = -1;
 	private String subTime = "";
 	
+
+	
 	//
 	private String text="";
 	private int follow=0;
