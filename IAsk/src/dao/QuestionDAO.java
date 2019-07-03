@@ -63,7 +63,6 @@ public class QuestionDAO {
 		jdbc.commit();
 		return rs;
 	}
-	
 	public ArrayList<QuestionBean> searchById(int id){
 		ArrayList<QuestionBean> questions = new ArrayList<QuestionBean>();
 		DBConn jdbc = DBConn.getInstance();
@@ -86,6 +85,7 @@ public class QuestionDAO {
 				e.printStackTrace();
 			}
 		}
+		
 		jdbc.close();
 		return questions;
 	}
@@ -115,7 +115,6 @@ public class QuestionDAO {
 		jdbc.close();
 		return questions;
 	}
-	
 	public ResultSet insertQues(String text, String subTime){
 		DBConn jdbc=DBConn.getInstance();
 		jdbc.startTrans();
@@ -157,3 +156,4 @@ public class QuestionDAO {
 		return rs;
 	}
 }
+
