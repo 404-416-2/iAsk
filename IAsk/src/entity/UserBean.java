@@ -9,6 +9,8 @@ public class UserBean {
 	private int age = -1;
 	private String school = "未知学校";
 
+
+
 	public void setId(int id){
 		this.id = id;
 	}
