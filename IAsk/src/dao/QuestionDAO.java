@@ -9,6 +9,7 @@ import utils.DBConn;
 
 public class QuestionDAO {
 	
+	
 	public ArrayList<QuestionBean> selectAll(){
 		ArrayList<QuestionBean> questions = new ArrayList<QuestionBean>();
 		DBConn jdbc = DBConn.getInstance();
