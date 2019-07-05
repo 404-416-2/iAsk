@@ -16,12 +16,12 @@ public class DBConn {
 						}
 					}
 				}
-				
 			}catch(InterruptedException e){
 				e.printStackTrace();
 			}
 			return singleton;
 		}
+
 	   static  String JDBC_DRIVER = "com.mysql.jdbc.Driver";  
 	   static  String DB_URL = "jdbc:mysql://localhost/qiuwen?characterEncoding=utf8&useAffectedRows=true";
 	   static  String USER = "root";
@@ -56,6 +56,7 @@ public class DBConn {
 		   return PASS;
 	   }
 	   
+	   
 	   private Connection conn = null;
 	   private Statement stmt = null;
 	   private ResultSet rs = null;
@@ -75,7 +76,6 @@ public class DBConn {
 			   e.printStackTrace();
 		   }
 	   }
-	
 
 	   public void startConn(){
 		   try{

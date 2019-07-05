@@ -9,21 +9,30 @@ import utils.DBConn;
 
 public class QuestionDAO {
 	
+	//获取所有的问题列表，显示在管理员端
 	public ArrayList<QuestionBean> selectAll(){
 		ArrayList<QuestionBean> questions = new ArrayList<QuestionBean>();
 		DBConn jdbc = DBConn.getInstance();
 		jdbc.startConn();
-		ResultSet rs = jdbc.query("select * from qiuwen_question");
+		ResultSet rs = jdbc.query("select * from qiuwen_question join qiuwen_user on usr_id = u_id;");
 		if(rs != null){
 			try{
 				while(rs.next()){
 					QuestionBean question = new QuestionBean();
-					question.setQid(rs.getInt("q_id"));
-					question.setText(rs.getString("q_text"));
+					question.setAge(rs.getInt("age"));
+					question.setCategory(rs.getString("category"));
 					question.setFollow(rs.getInt("follow"));
-					question.setClickNum(rs.getInt("click_num"));
+					question.setIsOk(rs.getInt("is_ok"));
 					question.setIsTop(rs.getInt("is_top"));
+					question.setNickname(rs.getString("nickname"));
+					question.setQuesId(rs.getInt("q_id"));
+					question.setQuesText(rs.getString("q_text"));
+					question.setSchool(rs.getString("school"));
+					question.setSex(rs.getInt("sex"));
+					question.setStarNum(rs.getInt("star_num"));
 					question.setSubTime(rs.getString("sub_time"));
+					question.setText(rs.getString("text"));
+					question.setUsrId(rs.getString("u_id"));
 					questions.add(question);
 				}
 			}catch (SQLException e) {
@@ -35,18 +44,19 @@ public class QuestionDAO {
 		return questions;
 	}
 	
+	//管理员删除某个问题
 	public boolean deleteQuestion(int id){
 		DBConn jdbc=DBConn.getInstance();
 		jdbc.startTrans();
-		String sql1 = "delete from qiuwen_question where q_id = '"+String.valueOf(id)+"'";
-		String sql2 = "delete from qiuwen_quesanswer where q_id = '"+String.valueOf(id)+"'";
+		
+		String sql1 = "delete from qiuwen_quesanswer where q_id = '"+String.valueOf(id)+"';";
+		String sql2 = "delete from qiuwen_question where q_id = '"+String.valueOf(id)+"';";
+		
 		boolean rs1 = jdbc.execute(sql1);
 		boolean rs2 = jdbc.execute(sql2);
 		jdbc.commit();
 		return rs1 && rs2;
 	}
-	
-	
 	
 	public boolean topquestion(int id){
 		DBConn jdbc=DBConn.getInstance();
@@ -57,6 +67,7 @@ public class QuestionDAO {
 		return rs;
 	}
 	
+	//管理员取消置顶某个提问
 	public boolean untopquestion(int id){
 		DBConn jdbc=DBConn.getInstance();
 		jdbc.startTrans();
@@ -66,22 +77,32 @@ public class QuestionDAO {
 		return rs;
 	}
 	
-	public ArrayList<QuestionBean> searchById(int id){
+	//管理员查找某个提问
+	public ArrayList<QuestionBean> searchById(String id){
 		ArrayList<QuestionBean> questions = new ArrayList<QuestionBean>();
 		DBConn jdbc = DBConn.getInstance();
 		jdbc.startConn();
-		ResultSet rs = jdbc.query("select * from qiuwen_question where q_id = '"+String.valueOf(id)+"'");
+		ResultSet rs = jdbc.query("select * from qiuwen_question join qiuwen_user on usr_id = u_id where q_text like '%"+id+"%'"
+				+ "or usr_id like '%"+id+"%';");
 		if(rs != null){
 			try{
 				
 				while(rs.next()){
 					QuestionBean question = new QuestionBean();
-					question.setQid(rs.getInt("q_id"));
-					question.setText(rs.getString("q_text"));
+					question.setAge(rs.getInt("age"));
+					question.setCategory(rs.getString("category"));
 					question.setFollow(rs.getInt("follow"));
-					question.setClickNum(rs.getInt("click_num"));
+					question.setIsOk(rs.getInt("is_ok"));
 					question.setIsTop(rs.getInt("is_top"));
+					question.setNickname(rs.getString("nickname"));
+					question.setQuesId(rs.getInt("q_id"));
+					question.setQuesText(rs.getString("q_text"));
+					question.setSchool(rs.getString("school"));
+					question.setSex(rs.getInt("sex"));
+					question.setStarNum(rs.getInt("star_num"));
 					question.setSubTime(rs.getString("sub_time"));
+					question.setText(rs.getString("text"));
+					question.setUsrId(rs.getString("u_id"));
 					questions.add(question);
 				}
 			}catch (SQLException e) {
@@ -92,7 +113,7 @@ public class QuestionDAO {
 		jdbc.close();
 		return questions;
 	}
-	
+
 	public ArrayList<QuestionBean> selectQuesOfUser(int uid) {
 		ArrayList<QuestionBean> questions = new ArrayList<QuestionBean>();
 		DBConn jdbc = DBConn.getInstance();
@@ -103,12 +124,20 @@ public class QuestionDAO {
 			try{
 				while(rs.next()){
 					QuestionBean question = new QuestionBean();
-					question.setQid(rs.getInt("q_id"));
-					question.setText(rs.getString("q_text"));
+					question.setAge(rs.getInt("age"));
+					question.setCategory(rs.getString("category"));
 					question.setFollow(rs.getInt("follow"));
-					question.setClickNum(rs.getInt("click_num"));
+					question.setIsOk(rs.getInt("is_ok"));
 					question.setIsTop(rs.getInt("is_top"));
+					question.setNickname(rs.getString("nickname"));
+					question.setQuesId(rs.getInt("q_id"));
+					question.setQuesText(rs.getString("q_text"));
+					question.setSchool(rs.getString("school"));
+					question.setSex(rs.getInt("sex"));
+					question.setStarNum(rs.getInt("star_num"));
 					question.setSubTime(rs.getString("sub_time"));
+					question.setText(rs.getString("text"));
+					question.setUsrId(rs.getString("u_id"));
 					questions.add(question);
 				}
 			}catch (SQLException e) {

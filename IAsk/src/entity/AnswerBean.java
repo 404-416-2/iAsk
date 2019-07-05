@@ -2,6 +2,7 @@ package entity;
 
 public class AnswerBean {
 	
+	
 	private int aid = -1;
 	private String text = "";
 	private String ansTime = "";
