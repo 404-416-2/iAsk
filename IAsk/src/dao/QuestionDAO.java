@@ -46,6 +46,8 @@ public class QuestionDAO {
 		return rs1 && rs2;
 	}
 	
+	
+	
 	public boolean topquestion(int id){
 		DBConn jdbc=DBConn.getInstance();
 		jdbc.startTrans();
@@ -71,6 +73,7 @@ public class QuestionDAO {
 		ResultSet rs = jdbc.query("select * from qiuwen_question where q_id = '"+String.valueOf(id)+"'");
 		if(rs != null){
 			try{
+				
 				while(rs.next()){
 					QuestionBean question = new QuestionBean();
 					question.setQid(rs.getInt("q_id"));
@@ -96,6 +99,7 @@ public class QuestionDAO {
 		jdbc.startConn();
 		ResultSet rs = jdbc.query("select * from qiuwen_question natural join qiuwen_userques where u_id = "+ uid);
 		if(rs != null){
+			
 			try{
 				while(rs.next()){
 					QuestionBean question = new QuestionBean();
