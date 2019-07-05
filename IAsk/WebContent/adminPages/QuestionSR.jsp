@@ -124,10 +124,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		   <div>
 			  <div class="group">
 			  <form action="QuestionSearchServlet" name="" method="post">
-					<input class="searchk" type="text" class="form-control" placeholder="请输入问题id（阿拉伯数字）" name="id">
+					<input class="searchk" type="text" class="form-control" placeholder="请输入关键字" name="id">
 					<input type="submit" value="查找">
-					<!--  <img class="searchk1" src="images/search.png" alt="搜索" width="30" height="30">-->				
+					<!--  <img class="searchk1" src="images/search.png" alt="搜索" width="30" height="30">-->
+				
 			</form>
+				
+				
 				</div>
 		      <div id="avatar" class="touxiang" class="nav nav-tabs">
 					<div class="dropdown">
@@ -138,7 +141,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    				<a href="<%=path%>/adminLogin.jsp">退出登录</a>
 	  					</div>
 					</div>
-			  </div>		  
+
+			  </div>
+			  
 		   </div>
 		</nav>
 	</div>
@@ -147,8 +152,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<table>
             <thead>
                 <tr>
-                	<td>id</td>
-                    <td>问题内容</td>
+                	<td>问题内容</td>
+                    <td>提问者</td>
                     <td>发布时间</td>
                     <td>操作</td>
                 </tr>
@@ -157,19 +162,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
             <c:forEach var="Q" items="${QuestionAll}">
             	<tr>
-                 	<td>${Q.qid}</td>
-                	<td>${Q.text}</td>
+                 	<td>${Q.quesText}</td>
+                	<td>${Q.usrId}</td>
                  	<td>${Q.subTime}</td>
                  	<td style="padding: 10px;">
-                    	<a href="QuestionDeleteServlet?id=${Q.qid}"><button class="delete" onclick="del(this)">删除</button></a>
-                    	<a href="QuestionTopServlet?id=${Q.qid}"><button class="topp" onclick="top(this)" >置顶</button></a>
-                    	<a href="QuestionUntopServlet?id=${Q.qid}"><button class="untop" onclick="unt(this)">取消</button></a>
+                    	<a href="QuestionDeleteServlet?qId=${Q.quesId}"><button class="delete" onclick="del(this)">删除</button></a>
+                    	<a href="QuestionTopServlet?qId=${Q.quesId}"><button class="topp" onclick="top(this)" >置顶</button></a>
+                    	<a href="QuestionUntopServlet?qId=${Q.quesId}"><button class="untop" onclick="unt(this)">取消</button></a>
                  	</td>
             	</tr>
             </c:forEach>
             </tbody>
             </table>
-		</div>		
-</div>
+
+
+
+		</div>
+		
+			</div>
 </body>
 </html>

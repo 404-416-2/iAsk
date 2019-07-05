@@ -2,32 +2,32 @@ package entity;
 
 public class QuestionBean {
 
-	private int q_id = -1;
-	private String u_id = "";
-	private String q_text = "";
+	private int quesId = -1;
+	private String usrId = "";
+	private String quesText = "";
 	private int follow = 0;    //回答数
-	private int star_num = 0;    //点击量
-	private int is_top = 0;
-	private String sub_time="";
+	private int starNum = 0;    //点击量
+	private int isTop = 0;
+	private String subTime="";
 	private String category="";
 	
 	private String nickname = "";
-	private int is_ok = 1;
+	private int isOk = 1;
 	private int sex = -1;
 	private int age = -1;
 	private String school = "未知学校";
 	private String text = "写下自己擅长的领域吧~";
 	
-	public void setQId(int qid){
-		this.q_id = qid;
+	public void setQuesId(int qid){
+		this.quesId = qid;
 	}
 	
-	public void setUId(String uid){
-		this.u_id = uid;
+	public void setUsrId(String uid){
+		this.usrId = uid;
 	}
 	
-	public void setQText(String q_text){
-		this.q_text = q_text;
+	public void setQuesText(String q_text){
+		this.quesText = q_text;
 	}
 	
 	public void setFollow(int follow){
@@ -35,31 +35,31 @@ public class QuestionBean {
 	}
 	
 	public void setStarNum(int starNum){
-		this.star_num = starNum;
+		this.starNum = starNum;
 	}
 
 	public void setIsTop(int isTop){
-		this.is_top = isTop;
+		this.isTop = isTop;
 	}
 	
 	public void setSubTime(String subTime){
-		this.sub_time = subTime;
+		this.subTime = subTime;
 	}
 	
 	public void setCategory(String category){
 		this.category = category;
 	}
 
-	public int getQId(){
-		return this.q_id;
+	public int getQuesId(){
+		return this.quesId;
 	}
 	
-	public String getUId(){
-		return this.u_id;
+	public String getUsrId(){
+		return this.usrId;
 	}
 	
-	public String getQText(){
-		return this.q_text;
+	public String getQuesText(){
+		return this.quesText;
 	}
 	
 	public int getFollow(){
@@ -67,15 +67,15 @@ public class QuestionBean {
 	}
 	
 	public int getStarNum(){
-		return this.star_num;
+		return this.starNum;
 	}
 	
 	public int getIsTop(){
-		return this.is_top;
+		return this.isTop;
 	}
 	
 	public String getSubTime(){
-		return this.sub_time;
+		return this.subTime;
 	}
 	
 	public String getCategory(){
@@ -87,7 +87,7 @@ public class QuestionBean {
 	}
 	
 	public void setIsOk(int isOk){
-		this.is_ok = isOk;
+		this.isOk = isOk;
 	}
 	
 	public void setSex(int sex){
@@ -111,7 +111,7 @@ public class QuestionBean {
 	}
 	
 	public int getIsOk(){
-		return this.is_ok;
+		return this.isOk;
 	}
 	
 	public int getSex(){

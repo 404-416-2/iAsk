@@ -124,7 +124,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		   <div>
 			  <div class="group">
 					<form action="UserSearchServlet" name="" method="post">
-					<input class="searchk" type="text" class="form-control" placeholder="请输入用户id（阿拉伯数字）" name="id">
+					<input class="searchk" type="text" class="form-control" placeholder="请输入关键字" name="usrId">
 					<input type="submit" value="查找">
 					<!--  <img class="searchk1" src="images/search.png" alt="搜索" width="30" height="30">-->
 				
@@ -150,9 +150,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<table>
             <thead>
             	<tr>
-                	<td>id</td>
-                    <td>账号</td>
-                    <td>密码</td>
+                	<td>账号（E-mail）</td>
+                    <td>昵称</td>
+                    <td>学校</td>
                     <td>操作</td>
                 </tr>
             </thead>
@@ -160,13 +160,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
             <c:forEach var="U" items="${UserAll}">
             	<tr>
-                 	<td>${U.id}</td>
-                	<td>${U.account}</td>
-                 	<td>${U.pwd}</td>
+                 	<td>${U.usrId}</td>
+                	<td>${U.nickname}</td>
+                 	<td>${U.school}</td>
                  	<td style="padding: 10px;">
-                    	<a href="UserDeleteServlet?id=${U.id}"><button class="delete" onclick="del(this)">删除</button></a>
-                    	<a href="UserLockServlet?id=${U.id}"><button class="lock" onclick="loc(this)">锁定</button></a>
-                    	<a href="UserUnlockServlet?id=${U.id}"><button class="unlock" onclick="unl(this)">解锁</button></a>
+                    	<a href="UserDeleteServlet?usrId=${U.usrId}"><button class="delete" onclick="del(this)">删除</button></a>
+                    	<a href="UserLockServlet?usrId=${U.usrId}"><button class="lock" onclick="loc(this)">锁定</button></a>
+                    	<a href="UserUnlockServlet?usrId=${U.usrId}"><button class="unlock" onclick="unl(this)">解锁</button></a>
                  	
                  	</td>
             	</tr>
