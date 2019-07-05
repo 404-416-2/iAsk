@@ -38,11 +38,10 @@ public class UserUnlockServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String id = request.getParameter("id");
-		int userId = Integer.parseInt(id);
+		String id = request.getParameter("usrId");
 		
 	    UserDAO ud = new UserDAO();
-		ud.unlockAccount(userId);
+		ud.unlockAccount(id);
 		
 		request.getRequestDispatcher("UserManageServlet").forward(request, response);
 	}

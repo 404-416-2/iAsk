@@ -9,17 +9,20 @@ import entity.UserBean;
 import utils.DBConn;
 
 public class UserDAO {
+	//管理员查看所有用户的界面
 	public ArrayList<UserBean> selectAll(){
 		ArrayList<UserBean> users = new ArrayList<UserBean>();
 		DBConn jdbc = DBConn.getInstance();
 		jdbc.startConn();
-		ResultSet rs = jdbc.query(" select * from qiuwen_user ");
+		ResultSet rs = jdbc.query(" select * from qiuwen_user;");
 		if(rs != null){
 			try{
 				while(rs.next()){
 					UserBean user = new UserBean();
-					user.setId(rs.getInt("usr_id"));
-					user.setPwd(rs.getString("usr_pwd"));
+					user.setUsrId(rs.getString("usr_id"));
+					user.setNickname(rs.getString("nickname"));
+					user.setText(rs.getString("text"));
+					user.setUsrPwd(rs.getString("usr_pwd"));
 					user.setIsOk(rs.getInt("is_ok"));
 					user.setSex(rs.getInt("sex"));
 					user.setAge(rs.getInt("age"));
@@ -34,28 +37,31 @@ public class UserDAO {
 		jdbc.close();
 		return users;
 	}
-
-	public boolean deleteAccount(int id){
+	
+	//管理员删除某个用户
+	public boolean deleteAccount(String id){
 		DBConn jdbc=DBConn.getInstance();
 		jdbc.startTrans();
-		String sql1 = "delete from qiuwen_user where usr_id = '"+String.valueOf(id)+"'";
-		String sql2 = "delete from qiuwen_userques where u_id = '"+String.valueOf(id)+"'";
+		String sql1 = "delete from qiuwen_question where u_id = '"+id+"';";
+		String sql2 = "delete from qiuwen_user where usr_id = '"+id+"'";
 		boolean rs1 = jdbc.execute(sql1);
 		boolean rs2 = jdbc.execute(sql2);
 		jdbc.commit();
 		return rs1&&rs2;
 	}
-
-	public boolean lockAccount(int id){
+	
+	//管理员锁定某个用户
+	public boolean lockAccount(String id){
 		DBConn jdbc=DBConn.getInstance();
 		jdbc.startTrans();
-		String sql = "update qiuwen_user set is_ok = '0' where usr_id = '"+String.valueOf(id)+"'";
+		String sql = "update qiuwen_user set is_ok = '0' where usr_id = '"+id+"'";
 		boolean rs = jdbc.execute(sql);
 		jdbc.commit();
 		return rs;
 	}
-
-	public boolean unlockAccount(int id){
+	
+	//管理员解锁某个用户
+	public boolean unlockAccount(String id){
 		DBConn jdbc=DBConn.getInstance();
 		jdbc.startTrans();
 		String sql = "update qiuwen_user set is_ok = '1' where usr_id = '"+String.valueOf(id)+"'";
@@ -63,19 +69,22 @@ public class UserDAO {
 		jdbc.commit();
 		return rs;
 	}
-
-	public ArrayList<UserBean> searchById(int id){
+	
+	//管理员查找用户名中包含某关键字的用户
+	public ArrayList<UserBean> searchById(String id){		
 		ArrayList<UserBean> users = new ArrayList<UserBean>();
 		DBConn jdbc = DBConn.getInstance();
 		jdbc.startConn();
-		ResultSet rs = jdbc.query("select * from qiuwen_user where usr_id = '"+String.valueOf(id)+"'");
+		ResultSet rs = jdbc.query("select * from qiuwen_user where usr_id like '%"+id+"%'"
+				+ " or nickname like '%"+id+"%' or school like '%"+id+"%';");
 		if(rs != null){
 			try{
 				while(rs.next()){
 					UserBean user = new UserBean();
-					user.setId(rs.getInt("usr_id"));
-					user.setAccount(rs.getString("usr_account"));
-					user.setPwd(rs.getString("usr_pwd"));
+					user.setUsrId(rs.getString("usr_id"));
+					user.setNickname(rs.getString("nickname"));
+					user.setText(rs.getString("text"));
+					user.setUsrPwd(rs.getString("usr_pwd"));
 					user.setIsOk(rs.getInt("is_ok"));
 					user.setSex(rs.getInt("sex"));
 					user.setAge(rs.getInt("age"));
@@ -99,7 +108,7 @@ public class UserDAO {
 		jdbc.close();
 		return rs;
 	}
-
+	
 	public ResultSet selectAccount(String account,String pwd){
 		DBConn jdbc = DBConn.getInstance();
 		jdbc.startConn();
@@ -108,7 +117,7 @@ public class UserDAO {
 		jdbc.close();
 		return rs;
 	}
-
+	
 	public boolean insertAccount(String account,String pwd){
 		DBConn jdbc=DBConn.getInstance();
 		jdbc.startTrans();
@@ -117,13 +126,13 @@ public class UserDAO {
 		jdbc.commit();
 		return rs;
 	}
-
+	
 	public boolean updateSchool(int quesId,String text) {
 		DBConn jdbc=DBConn.getInstance();
 		jdbc.startTrans();
 		boolean rs = jdbc.execute(" update qiuwen_user set school = '"+text+"' where usr_id = "+quesId );
 		jdbc.commit();
 		return rs;
-
+		
 	}
 }

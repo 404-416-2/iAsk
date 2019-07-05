@@ -1,6 +1,8 @@
-package servlet.admin.user;
+package servlet.homepage.category;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,22 +10,23 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.UserDAO;;
+import entity.*;
+import dao.*;
+import net.sf.json.JSONArray;
 
 /**
- * Servlet implementation class UserDeleteServlet
+ * Servlet implementation class SearchServlet
  */
-@WebServlet("/UserLockServlet")
-public class UserLockServlet extends HttpServlet {
+@WebServlet("/OthersServlet")
+public class OthersServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public UserLockServlet() {
+    public OthersServlet() {
         super();
         // TODO Auto-generated constructor stub
-        
     }
 
 	/**
@@ -31,18 +34,23 @@ public class UserLockServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doPost(request, response);
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String id = request.getParameter("usrId");
-		
-	    UserDAO ud = new UserDAO();
-		ud.lockAccount(id);
-		
-		request.getRequestDispatcher("UserManageServlet").forward(request, response);
-		}
+		UserQuesDAO test1 = new UserQuesDAO();
+		ArrayList<UserStarBean> quesList = test1.selectByCateOth();
+		String responseText = "";
+		JSONArray json = JSONArray.fromObject(quesList);
+		responseText = json.toString();
+        System.out.println("hahahah");
+		response.setContentType("application/json;charset=utf-8");
+		response.setCharacterEncoding("UTF-8");
+		PrintWriter out =response.getWriter() ;
+		out.write(responseText);
+		out.close();
+	}
 }

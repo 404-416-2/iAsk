@@ -9,23 +9,30 @@ import utils.DBConn;
 
 public class QuestionDAO {
 	
-	
+	//获取所有的问题列表，显示在管理员端
 	public ArrayList<QuestionBean> selectAll(){
 		ArrayList<QuestionBean> questions = new ArrayList<QuestionBean>();
 		DBConn jdbc = DBConn.getInstance();
 		jdbc.startConn();
-		ResultSet rs = jdbc.query("select * from qiuwen_question");
+		ResultSet rs = jdbc.query("select * from qiuwen_question join qiuwen_user on usr_id = u_id;");
 		if(rs != null){
 			try{
 				while(rs.next()){
 					QuestionBean question = new QuestionBean();
-					question.setQid(rs.getInt("q_id"));
-					question.setText(rs.getString("q_text"));
+					question.setAge(rs.getInt("age"));
+					question.setCategory(rs.getString("category"));
 					question.setFollow(rs.getInt("follow"));
-					question.setClickNum(rs.getInt("click_num"));
+					question.setIsOk(rs.getInt("is_ok"));
 					question.setIsTop(rs.getInt("is_top"));
+					question.setNickname(rs.getString("nickname"));
+					question.setQId(rs.getInt("q_id"));
+					question.setQText(rs.getString("q_text"));
+					question.setSchool(rs.getString("school"));
+					question.setSex(rs.getInt("sex"));
+					question.setStarNum(rs.getInt("star_num"));
 					question.setSubTime(rs.getString("sub_time"));
-					questions.add(question);
+					question.setText(rs.getString("text"));
+					question.setUId(rs.getString("u_id"));
 				}
 			}catch (SQLException e) {
 				// TODO Auto-generated catch block
@@ -64,6 +71,7 @@ public class QuestionDAO {
 		jdbc.commit();
 		return rs;
 	}
+/*	
 	public ArrayList<QuestionBean> searchById(int id){
 		ArrayList<QuestionBean> questions = new ArrayList<QuestionBean>();
 		DBConn jdbc = DBConn.getInstance();
@@ -86,11 +94,10 @@ public class QuestionDAO {
 				e.printStackTrace();
 			}
 		}
-		
 		jdbc.close();
 		return questions;
 	}
-	
+
 	public ArrayList<QuestionBean> selectQuesOfUser(int uid) {
 		ArrayList<QuestionBean> questions = new ArrayList<QuestionBean>();
 		DBConn jdbc = DBConn.getInstance();
@@ -116,6 +123,7 @@ public class QuestionDAO {
 		jdbc.close();
 		return questions;
 	}
+	*/
 	public ResultSet insertQues(String text, String subTime){
 		DBConn jdbc=DBConn.getInstance();
 		jdbc.startTrans();
@@ -157,4 +165,3 @@ public class QuestionDAO {
 		return rs;
 	}
 }
-

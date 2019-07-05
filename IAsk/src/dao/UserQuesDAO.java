@@ -4,13 +4,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import entity.UserQuesBean;
+import entity.UserStarBean;
 import utils.DBConn;
 
 public class UserQuesDAO {
 //select
-	public ArrayList<UserQuesBean> selectLinkUserTopQues(){
-		ArrayList<UserQuesBean> quesTop = new ArrayList<UserQuesBean>();
+	public ArrayList<UserStarBean> selectLinkUserTopQues(){
+		ArrayList<UserStarBean> quesTop = new ArrayList<UserStarBean>();
 		DBConn jdbc = DBConn.getInstance();
 		jdbc.startConn();
 		ResultSet res = jdbc.query(" select * from qiuwen_question"
@@ -19,7 +19,7 @@ public class UserQuesDAO {
 		if(res != null){
 			try{
 				while(res.next()){
-					UserQuesBean ques = new UserQuesBean();
+					UserStarBean ques = new UserStarBean();
 					ques.setQid(res.getInt("q_id"));
 					ques.setUid(res.getInt("u_id"));
 					ques.setSubTime(res.getString("sub_time"));
@@ -46,8 +46,8 @@ public class UserQuesDAO {
 		return quesTop;
 	}
 	
-	public ArrayList<UserQuesBean> selectLinkUserUnTopQues(){
-		ArrayList<UserQuesBean> quesList = new ArrayList<UserQuesBean>();
+	public ArrayList<UserStarBean> selectLinkUserUnTopQues(){
+		ArrayList<UserStarBean> quesList = new ArrayList<UserStarBean>();
 		DBConn jdbc = DBConn.getInstance();
 		jdbc.startConn();
 		ResultSet res = jdbc.query(" select * from qiuwen_question"
@@ -56,7 +56,7 @@ public class UserQuesDAO {
 		if(res != null){
 			try{
 				while(res.next()){
-					UserQuesBean ques = new UserQuesBean();
+					UserStarBean ques = new UserStarBean();
 					ques.setQid(res.getInt("q_id"));
 					ques.setUid(res.getInt("u_id"));
 					ques.setSubTime(res.getString("sub_time"));
@@ -83,8 +83,8 @@ public class UserQuesDAO {
 		return quesList;
 	}
 	
-	public ArrayList<UserQuesBean> selectBySearch(String searchText){
-		ArrayList<UserQuesBean> quesList = new ArrayList<UserQuesBean>();
+	public ArrayList<UserStarBean> selectBySearch(String searchText){
+		ArrayList<UserStarBean> quesList = new ArrayList<UserStarBean>();
 		DBConn jdbc=DBConn.getInstance();
 		jdbc.startConn();
 		ResultSet res = jdbc.query(" select * from qiuwen_question"
@@ -93,7 +93,7 @@ public class UserQuesDAO {
 		if(res != null){
 			try{
 				while(res.next()){
-					UserQuesBean ques = new UserQuesBean();
+					UserStarBean ques = new UserStarBean();
 					ques.setQid(res.getInt("q_id"));
 					ques.setUid(res.getInt("u_id"));
 					ques.setSubTime(res.getString("sub_time"));
@@ -119,8 +119,8 @@ public class UserQuesDAO {
 		return quesList;
 	}
 	
-	public ArrayList<UserQuesBean> selectByCate(String category){
-		ArrayList<UserQuesBean> quesList = new ArrayList<UserQuesBean>();
+	public ArrayList<UserStarBean> selectByCate(String category){
+		ArrayList<UserStarBean> quesList = new ArrayList<UserStarBean>();
 		DBConn jdbc=DBConn.getInstance();
 		jdbc.startConn();
 		ResultSet res = jdbc.query(" select * from qiuwen_question"
@@ -129,7 +129,7 @@ public class UserQuesDAO {
 		if(res != null){
 			try{
 				while(res.next()){
-					UserQuesBean ques = new UserQuesBean();
+					UserStarBean ques = new UserStarBean();
 					ques.setQid(res.getInt("q_id"));
 					ques.setUid(res.getInt("u_id"));
 					ques.setSubTime(res.getString("sub_time"));
@@ -155,8 +155,8 @@ public class UserQuesDAO {
 		return quesList;
 	}
 	
-	public ArrayList<UserQuesBean> selectByCateOth(){
-		ArrayList<UserQuesBean> quesList = new ArrayList<UserQuesBean>();
+	public ArrayList<UserStarBean> selectByCateOth(){
+		ArrayList<UserStarBean> quesList = new ArrayList<UserStarBean>();
 		DBConn jdbc=DBConn.getInstance();
 		jdbc.startConn();
 		ResultSet res = jdbc.query(" select * from qiuwen_question"
@@ -165,7 +165,7 @@ public class UserQuesDAO {
 		if(res != null){
 			try{
 				while(res.next()){
-					UserQuesBean ques = new UserQuesBean();
+					UserStarBean ques = new UserStarBean();
 					ques.setQid(res.getInt("q_id"));
 					ques.setUid(res.getInt("u_id"));
 					ques.setSubTime(res.getString("sub_time"));

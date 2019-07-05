@@ -34,11 +34,11 @@ public class UserSearchServlet extends HttpServlet {
 		
 		
 		response.setContentType("text/html; charset=UTF-8");
-		String id = request.getParameter("id");
-		int usrId = Integer.parseInt(id);
-		
+		//String id = request.getParameter("usrId");
+		String id = new String(request.getParameter("usrId").getBytes("ISO-8859-1"),"utf-8");
+		System.out.println(id);
 		UserDAO ud = new UserDAO();
-		ArrayList<UserBean> users = ud.searchById(usrId);
+		ArrayList<UserBean> users = ud.searchById(id);
 		
 		request.setAttribute("UserAll", users);
 		request.getRequestDispatcher("adminPages/UserSR.jsp").forward(request, response);

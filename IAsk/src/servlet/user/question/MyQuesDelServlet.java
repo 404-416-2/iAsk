@@ -1,4 +1,5 @@
-package servlet.admin.user;
+package servlet.user.question;
+
 
 import java.io.IOException;
 
@@ -8,19 +9,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.UserDAO;;
+import dao.QuestionDAO;
 
 /**
  * Servlet implementation class UserDeleteServlet
  */
-@WebServlet("/UserLockServlet")
-public class UserLockServlet extends HttpServlet {
+@WebServlet("/MyQuesDelServlet")
+public class MyQuesDelServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public UserLockServlet() {
+    public MyQuesDelServlet() {
         super();
         // TODO Auto-generated constructor stub
         
@@ -38,11 +39,13 @@ public class UserLockServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String id = request.getParameter("usrId");
+
+		String id = request.getParameter("id");
+		int quesId = Integer.parseInt(id);
 		
-	    UserDAO ud = new UserDAO();
-		ud.lockAccount(id);
+	    QuestionDAO qd = new QuestionDAO();
+		qd.deleteQuestion(quesId);
 		
-		request.getRequestDispatcher("UserManageServlet").forward(request, response);
+		request.getRequestDispatcher("userPages/ToPersonServlet").forward(request, response);
 		}
 }

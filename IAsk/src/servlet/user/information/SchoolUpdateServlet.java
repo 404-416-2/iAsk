@@ -1,6 +1,8 @@
-package servlet.admin.user;
+package servlet.user.information;
+
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,14 +15,14 @@ import dao.UserDAO;;
 /**
  * Servlet implementation class UserDeleteServlet
  */
-@WebServlet("/UserLockServlet")
-public class UserLockServlet extends HttpServlet {
+@WebServlet("/SchoolUpdateServlet")
+public class SchoolUpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public UserLockServlet() {
+    public SchoolUpdateServlet() {
         super();
         // TODO Auto-generated constructor stub
         
@@ -38,11 +40,25 @@ public class UserLockServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String id = request.getParameter("usrId");
+        System.out.println("ddfdfdfddfddf");
+		String uid = request.getParameter("id");
+		String text = request.getParameter("text");
+		System.out.println("Update"+text);
+		int quesId = Integer.parseInt(uid);
+		String responseText = "";
+	    UserDAO updateQ = new UserDAO();
 		
-	    UserDAO ud = new UserDAO();
-		ud.lockAccount(id);
+	    if(updateQ.updateSchool(quesId,text)){
+	    	responseText = "{ \"code\" : \"success\" , "
+	    			+ "\"text\" : \""+text+"\" }";
+	    }else{
+	    	responseText = "{\"code\" : \"fail\" , "
+	    			+ "\"text\" : \""+text+"\" }";
+	    }
 		
-		request.getRequestDispatcher("UserManageServlet").forward(request, response);
-		}
+		response.setCharacterEncoding("UTF-8");  
+		response.setContentType("application/json; charset=utf-8");  
+		PrintWriter writer = response.getWriter();
+		writer.append(responseText); 
+	}
 }

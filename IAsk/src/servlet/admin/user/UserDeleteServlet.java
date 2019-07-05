@@ -39,11 +39,10 @@ public class UserDeleteServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		String id = request.getParameter("id");
-		int userId = Integer.parseInt(id);
+		String id = request.getParameter("usrId");
 		
 	    UserDAO ud = new UserDAO();
-		ud.deleteAccount(userId);
+		ud.deleteAccount(id);
 		
 		request.getRequestDispatcher("UserManageServlet").forward(request, response);
 		}
