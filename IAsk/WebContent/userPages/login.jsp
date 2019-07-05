@@ -13,8 +13,11 @@ String path = request.getContextPath();
  <!--引入jquery-->
  <script type="text/javascript" src="jquery-3.2.1.min.js"></script>
  <script type="text/javascript" src="./layer/layer.js"></script>
-
 	<style>
+	body
+	{
+		background-image:url(<%= path %>/images/back.jpg);
+	}
 	.part
 	{
 		font-size: 20px;
@@ -25,26 +28,48 @@ String path = request.getContextPath();
 	}
 	.submit
 	{
-		width: 140px;
-		height: 40px;
+		width: 120px;
+		height: 35px;
 		font-size: 13px;
 		color: white;
 		background-color: #cc3300;
 		border: none;
 		border-radius: 5px;
-		margin-left: 120px;
-		margin-top: 50px;
+		margin-left: 140px;
+		margin-top: 80px;
+		border-radius:10px;
+	}
+	.h
+	{
+		position:absolute;
+		margin-top:8px;
+		margin-left:5%;
+		font-size: 15px;
+		font-family:serif,Sans-serif;
+		font-style:normal;
+	}
+	#part1
+	{
+		margin-top: 100px;
 	}
 </style>
 </head>
 <body>
 <div style="margin-top: 70px;">
-<form id="loginF">
-<div id="part" class="part"> <h>用户名</h><input id="id" name="id" style="height: 28px;width: 263px;margin-left: 10px;"></input></div>
-<div id="" class="part"> <h>密码</h><input id="psd" name="pwd" type="password" style="height: 28px;width: 263px;margin-left: 30px;"></input></div>
-<div style="margin-left: 260px;margin-top: 40px;"></div>
-<input type="submit" class="submit" id="subm" value="登陆">
-<form>
+	<form id="loginF">
+		<div id="part1" class="part"> 
+			<h class = "h">用户名</h>
+			<input id="id" name="id" style="height: 28px;width: 263px;margin-left: 20%;border-radius:5px;"></input>
+		</div>
+		<div id="part3" class="part"> 
+			<h class = "h">密码</h>
+			<input id="psd" name="pwd" type="password" style="height: 28px;width: 263px;margin-left: 20%;border-radius:5px;"></input>
+		</div>
+		<div ><!--style="margin-left: 260px;margin-top: 40px;"-->
+			<input type="submit" class="submit" id="subm" value="登陆">
+		</div>
+
+	<form>
 </div>
 <script type="text/javascript">
 	// $(document).ready(function(){
