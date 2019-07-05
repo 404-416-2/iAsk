@@ -58,7 +58,6 @@ public class QuestionDAO {
 		return rs1 && rs2;
 	}
 	
-	//管理员置顶某个提问
 	public boolean topquestion(int id){
 		DBConn jdbc=DBConn.getInstance();
 		jdbc.startTrans();
@@ -87,6 +86,7 @@ public class QuestionDAO {
 				+ "or usr_id like '%"+id+"%';");
 		if(rs != null){
 			try{
+				
 				while(rs.next()){
 					QuestionBean question = new QuestionBean();
 					question.setAge(rs.getInt("age"));
@@ -120,6 +120,7 @@ public class QuestionDAO {
 		jdbc.startConn();
 		ResultSet rs = jdbc.query("select * from qiuwen_question natural join qiuwen_userques where u_id = "+ uid);
 		if(rs != null){
+			
 			try{
 				while(rs.next()){
 					QuestionBean question = new QuestionBean();
