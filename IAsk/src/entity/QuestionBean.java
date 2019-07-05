@@ -1,5 +1,5 @@
 package entity;
-
+//questionbean
 public class QuestionBean {
 
 	private int quesId = -1;
