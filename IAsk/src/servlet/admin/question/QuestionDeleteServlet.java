@@ -39,7 +39,7 @@ public class QuestionDeleteServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		String id = request.getParameter("id");
+		String id = request.getParameter("qId");
 		int quesId = Integer.parseInt(id);
 		
 	    QuestionDAO qd = new QuestionDAO();

@@ -41,7 +41,7 @@ public class QuestionUpdateServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		String qid = request.getParameter("qid");
+		String qid = request.getParameter("qId");
 		String text = request.getParameter("text");
 		System.out.println("Update"+text);
 		int quesId = Integer.parseInt(qid);
