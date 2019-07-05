@@ -14,6 +14,7 @@ import dao.UserDAO;
 
 /**
  * Servlet implementation class UserManageServlet
+ * @modify shijiahui 20190704
  */
 @WebServlet("/UserManageServlet")
 
