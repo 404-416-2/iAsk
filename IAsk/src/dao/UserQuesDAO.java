@@ -9,6 +9,7 @@ import utils.DBConn;
 
 public class UserQuesDAO {
 //select
+
 	public ArrayList<UserQuesBean> selectLinkUserTopQues(){
 		ArrayList<UserQuesBean> quesTop = new ArrayList<UserQuesBean>();
 		DBConn jdbc = DBConn.getInstance();
