@@ -9,6 +9,7 @@ import entity.UserBean;
 import utils.DBConn;
 
 public class UserDAO {
+	
 	public ArrayList<UserBean> selectAll(){
 		ArrayList<UserBean> users = new ArrayList<UserBean>();
 		DBConn jdbc = DBConn.getInstance();
