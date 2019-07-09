@@ -111,27 +111,23 @@ button {
 	<div class="header" id="header">
 		<nav class="navbar" role="navigation" style="height: 105px">
 			<div class="navbar-header">
-				<img class="tubiao" src="images/biao.jpg" width="100" height="100"
-					alt="图标">
+				<img class="tubiao" src="images/biao.jpg" width="100" height="100" alt="图标">
 			</div>
 			<div>
 				<div class="group">
 					<form action="UserSearchServlet" name="" method="post">
-						<input class="searchk" type="text" class="form-control"
-							placeholder="请输入关键字" name="usrId"> <input type="submit"
-							value="查找">
+						<input class="searchk" type="text" class="form-control" placeholder="请输入关键字" name="usrId"> 
+						<input type="submit" value="查找" style="background:#FF5A44;height:30px;width:55px;border-radius:10px">
 						<!--  <img class="searchk1" src="images/search.png" alt="搜索" width="30" height="30">-->
-
 					</form>
 				</div>
 				<div id="avatar" class="touxiang" class="nav nav-tabs">
 					<div class="dropdown">
-						<img class="touxiang1" src="./images/tou.JPG" width="60"
-							height="60" alt="头像">
+						<img class="touxiang1" src="./images/tou.JPG" width="60" height="60" alt="头像">
 						<div class="dropdown-content">
-							<a href="<%=path%>/userManageServlet">账号管理</a> <a
-								href="<%=path%>/questionManageServlet">问答管理</a> <a
-								href="<%=path%>/adminLogin.jsp">退出登录</a>
+							<a href="<%=path%>/userManageServlet">账号管理</a> 
+							<a href="<%=path%>/questionManageServlet">问答管理</a> 
+							<a href="<%=path%>/adminLogin.jsp">退出登录</a>
 						</div>
 					</div>
 				</div>
