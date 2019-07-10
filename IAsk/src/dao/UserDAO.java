@@ -48,6 +48,10 @@ public class UserDAO {
 		return rs1&&rs2;
 	}
 	
+	
+	
+	
+	
 	public boolean lockAccount(int id){
 		DBConn jdbc=DBConn.getInstance();
 		jdbc.startTrans();
