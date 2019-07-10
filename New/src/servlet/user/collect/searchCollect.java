@@ -19,7 +19,7 @@ public class searchCollect extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		super.doGet(req, resp);
+		doPost(req, resp);
 	}
 	
 	@Override
@@ -37,6 +37,7 @@ public class searchCollect extends HttpServlet{
 		CollectDao collectDao = new CollectDao();
 		ArrayList<QuestionBean> collectionSearch = collectDao.searchCollectByText(keys, uid);
 		req.setAttribute("collectSearchResult", collectionSearch);
+		req.setAttribute("collectSearchNum", collectionSearch.size());
 		req.getRequestDispatcher("userPages/questionCollectSearch.jsp").forward(req, resp);;
 	}
 	

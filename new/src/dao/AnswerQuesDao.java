@@ -309,7 +309,7 @@ public class AnswerQuesDao {
 			PreparedStatement pstmt2 = connection
 					.prepareStatement("update qiuwen_question set follow = follow-1 where q_id = ?");
 			pstmt1.setString(1, uid);
-			pstmt1.setInt(1, qid);
+			pstmt1.setInt(2, qid);
 			pstmt2.setInt(1, qid);
 
 			int rs1 = pstmt1.executeUpdate();

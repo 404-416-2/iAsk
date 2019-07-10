@@ -46,6 +46,6 @@ public class UpdateQues extends HttpServlet {
 
 		req.setAttribute("q_id", String.valueOf(qid));
 
-		req.getRequestDispatcher("ViewQuestion").forward(req, resp);
+		req.getRequestDispatcher("ViewUsrQues").forward(req, resp);
 	}
 }

@@ -17,7 +17,8 @@ public class deleteCollect extends HttpServlet {
 		// TODO Auto-generated method stub
 		req.setCharacterEncoding("utf-8");
 		String qidString = req.getParameter("q_id");
-		String uid = req.getParameter("u_id");
+
+		String uid = (String)req.getSession().getAttribute("uid");
 		int qid = Integer.parseInt(qidString);
 		
 		

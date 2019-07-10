@@ -1,4 +1,4 @@
-<%@ page import="utils.*" %>
+<%@ page import="utils.*"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	import="java.sql.*" import="java.text.*" import="java.util.Calendar"
 	pageEncoding="utf-8"%>

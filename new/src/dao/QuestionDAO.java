@@ -176,6 +176,39 @@ public class QuestionDAO {
 		jdbc.close();
 		return questions;
 	}
+	
+	public ArrayList<QuestionBean> searchByQId(int qid) {
+		ArrayList<QuestionBean> questions = new ArrayList<QuestionBean>();
+		DBConn jdbc = DBConn.getInstance();
+
+		try {
+			Connection connection = jdbc.startConn();
+			PreparedStatement pstmt = connection.prepareStatement(
+					"select * from qiuwen_question where q_id = ?");
+			pstmt.setInt(1, qid);
+			ResultSet rs = pstmt.executeQuery();
+
+			if (rs != null) {
+				while (rs.next()) {
+					QuestionBean question = new QuestionBean();
+					question.setCategory(rs.getString("category"));
+					question.setFollow(rs.getInt("follow"));
+					question.setIsTop(rs.getInt("is_top"));
+					question.setQuesId(rs.getInt("q_id"));
+					question.setUsrId(rs.getString("u_id"));
+					question.setQuesText(rs.getString("q_text"));
+					question.setStarNum(rs.getInt("star_num"));
+					question.setSubTime(rs.getString("sub_time"));
+					questions.add(question);
+				}
+			}else System.err.println("没有查询到问题！");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		jdbc.close();
+		return questions;
+	}
 
 	public ArrayList<QuestionBean> selectQuesOfUser(String uid) {
 

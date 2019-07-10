@@ -12,8 +12,10 @@ import javax.servlet.http.HttpSession;
 
 import dao.AnswerQuesDao;
 import dao.QuestionDAO;
+import dao.UserDAO;
 import entity.AnswerquesBean;
 import entity.QuestionBean;
+import entity.UserBean;
 
 public class ViewUsrQues extends HttpServlet {
 
@@ -35,13 +37,13 @@ public class ViewUsrQues extends HttpServlet {
 		HttpSession session = req.getSession();
 
 		String uid = (String) session.getAttribute("uid");
-		System.out.println(uid);
+		UserBean user = new UserBean();
+		UserDAO  udao = new UserDAO();
+		user = udao.selectByUId(uid);
+		req.setAttribute("nickname", user.getNickname());
 		QuestionDAO questionDAO = new QuestionDAO();
 		ArrayList<QuestionBean> usrAllQues = questionDAO.selectQuesOfUser(uid);
-		System.out.println(uid);
-		System.out.println(usrAllQues.size());
 		req.setAttribute("usrAllQues", usrAllQues);
 		req.getRequestDispatcher("userPages/userQuesList.jsp").forward(req, resp);
-		System.out.println(usrAllQues);
 	}
 }
