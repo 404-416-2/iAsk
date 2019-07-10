@@ -117,7 +117,7 @@ button {
 				<div class="group">
 					<form action="UserSearchServlet" name="" method="post">
 						<input class="searchk" type="text" class="form-control" placeholder="请输入关键字" name="usrId"> 
-						<input type="submit" value="查找" style="background:#FF5A44;height:30px;width:55px;border-radius:10px">
+						<input type="submit" value="查找" style="background:	#E0FFFF;height:30px;width:60px;margin-left:10px;border-radius:5px">
 						<!--  <img class="searchk1" src="images/search.png" alt="搜索" width="30" height="30">-->
 					</form>
 				</div>
