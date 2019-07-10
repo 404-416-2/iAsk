@@ -17,6 +17,14 @@ public class QuestionDAO {
 		ResultSet rs = jdbc.query("select * from qiuwen_question join qiuwen_user on usr_id = u_id;");
 		if(rs != null){
 			try{
+
+
+
+
+
+
+
+
 				while(rs.next()){
 					QuestionBean question = new QuestionBean();
 					question.setAge(rs.getInt("age"));
