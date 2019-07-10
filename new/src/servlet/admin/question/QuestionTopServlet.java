@@ -44,14 +44,8 @@ public class QuestionTopServlet extends HttpServlet {
 		int qId = Integer.parseInt(id);
 		
 		QuestionDAO qd = new QuestionDAO();
-		int top = qd.searchByQId(qId).get(0).getIsTop();
 		
-		if (top == 1) {
-			
-		}else {
-			qd.topquestion(qId);
-		}
-		
+		qd.topquestion(qId);
 		request.getRequestDispatcher("QuestionManageServlet").forward(request, response);
 	}
 }

@@ -4,7 +4,7 @@
   <welcome-file-list>
     <welcome-file>home</welcome-file>
   </welcome-file-list>
-    <servlet>
+  <servlet>
     <servlet-name>Home</servlet-name>
     <servlet-class>servlet.index.Home</servlet-class>
   </servlet>
@@ -20,7 +20,6 @@
     <servlet-name>AdminLoginServlet</servlet-name>
     <url-pattern>/adminLoginServlet</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>QuestionSearchServlet</servlet-name>
     <servlet-class>servlet.admin.question.QuestionSearchServlet</servlet-class>
@@ -221,91 +220,7 @@
     <servlet-name>MyQuesDelServlet</servlet-name>
     <url-pattern>/myQuesDelServlet</url-pattern>
   </servlet-mapping>
-  
-
-  <!-- sunqixing answer servlet -->
-  <servlet>
-      <servlet-name>AddAnswer</servlet-name>
-      <servlet-class>servlet.user.answer.AddAnswer</servlet-class>
-  </servlet>
-  <servlet-mapping>
-      <servlet-name>AddAnswer</servlet-name>
-      <url-pattern>/AddAnswer</url-pattern>
-  </servlet-mapping>
-  
-   <servlet>
-      <servlet-name>deleteAnswer</servlet-name>
-      <servlet-class>servlet.user.answer.deleteAnswer</servlet-class>
-  </servlet>
-  <servlet-mapping>
-      <servlet-name>deleteAnswer</servlet-name>
-      <url-pattern>/deleteAnswer</url-pattern>
-  </servlet-mapping>
-  
-   <servlet>
-      <servlet-name>UpdateAnswer</servlet-name>
-      <servlet-class>servlet.user.answer.UpdateAnswer</servlet-class>
-  </servlet>
-  <servlet-mapping>
-      <servlet-name>UpdateAnswer</servlet-name>
-      <url-pattern>/UpdateAnswer</url-pattern>
-  </servlet-mapping>
-  
-   <servlet>
-      <servlet-name>ViewQuesAnswer</servlet-name>
-      <servlet-class>servlet.user.answer.ViewQuesAnswer</servlet-class>
-  </servlet>
-  <servlet-mapping>
-      <servlet-name>ViewQuesAnswer</servlet-name>
-      <url-pattern>/ViewQuesAnswer</url-pattern>
-  </servlet-mapping>
-  
-   <servlet>
-      <servlet-name>ViewUsrAnswer</servlet-name>
-      <servlet-class>servlet.user.answer.ViewUsrAnswer</servlet-class>
-  </servlet>
-  <servlet-mapping>
-      <servlet-name>ViewUsrAnswer</servlet-name>
-      <url-pattern>/ViewUsrAnswer</url-pattern>
-  </servlet-mapping>
-  <servlet>
-      <servlet-name>SearchAnswer</servlet-name>
-      <servlet-class>servlet.user.answer.SearchAnswer</servlet-class>
-  </servlet>
-  <servlet-mapping>
-      <servlet-name>SearchAnswer</servlet-name>
-      <url-pattern>/SearchAnswer</url-pattern>
-  </servlet-mapping>
-  
-  <!-- xiezikun question servlet -->
-  <servlet>
-      <servlet-name>AddQues</servlet-name>
-      <servlet-class>servlet.user.question.AddQues</servlet-class>
-  </servlet>
-  <servlet-mapping>
-      <servlet-name>AddQues</servlet-name>
-      <url-pattern>/AddQues</url-pattern>
-  </servlet-mapping>
-  
-   <servlet>
-      <servlet-name>deleteQues</servlet-name>
-      <servlet-class>servlet.user.question.DeleteQues</servlet-class>
-  </servlet>
-  <servlet-mapping>
-      <servlet-name>deleteQues</servlet-name>
-      <url-pattern>/deleteQues</url-pattern>
-  </servlet-mapping>
-  
-   <servlet>
-      <servlet-name>UpdateQues</servlet-name>
-      <servlet-class>servlet.user.question.UpdateQues</servlet-class>
-  </servlet>
-  <servlet-mapping>
-      <servlet-name>UpdateQues</servlet-name>
-      <url-pattern>/UpdateQues</url-pattern>
-  </servlet-mapping>
-  
-   <servlet>
+     <servlet>
       <servlet-name>ViewUsrQues</servlet-name>
       <servlet-class>servlet.user.question.ViewUsrQues</servlet-class>
   </servlet>
@@ -314,20 +229,115 @@
       <url-pattern>/ViewUsrQues</url-pattern>
   </servlet-mapping>
   <servlet>
-      <servlet-name>SearchQues</servlet-name>
-      <servlet-class>servlet.user.question.SearchQues</servlet-class>
+    <servlet-name>AddAnswer</servlet-name>
+    <servlet-class>servlet.user.answer.AddAnswer</servlet-class>
   </servlet>
   <servlet-mapping>
-      <servlet-name>SearchQues</servlet-name>
-      <url-pattern>/SearchQues</url-pattern>
+    <servlet-name>AddAnswer</servlet-name>
+    <url-pattern>/AddAnswer</url-pattern>
   </servlet-mapping>
-     <servlet>
-      <servlet-name>ViewQuestion</servlet-name>
-      <servlet-class>servlet.user.question.ViewQuestion</servlet-class>
+  <servlet>
+    <servlet-name>deleteAnswer</servlet-name>
+    <servlet-class>servlet.user.answer.deleteAnswer</servlet-class>
   </servlet>
   <servlet-mapping>
-      <servlet-name>ViewQuestion</servlet-name>
-      <url-pattern>/ViewQuestion</url-pattern>
+    <servlet-name>deleteAnswer</servlet-name>
+    <url-pattern>/deleteAnswer</url-pattern>
   </servlet-mapping>
-  
+  <servlet>
+    <servlet-name>UpdateAnswer</servlet-name>
+    <servlet-class>servlet.user.answer.UpdateAnswer</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdateAnswer</servlet-name>
+    <url-pattern>/UpdateAnswer</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>ViewQuesAnswer</servlet-name>
+    <servlet-class>servlet.user.answer.ViewQuesAnswer</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ViewQuesAnswer</servlet-name>
+    <url-pattern>/ViewQuesAnswer</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>ViewUsrAnswer</servlet-name>
+    <servlet-class>servlet.user.answer.ViewUsrAnswer</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ViewUsrAnswer</servlet-name>
+    <url-pattern>/ViewUsrAnswer</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>SearchAnswer</servlet-name>
+    <servlet-class>servlet.user.answer.SearchAnswer</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SearchAnswer</servlet-name>
+    <url-pattern>/SearchAnswer</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>addCollect</servlet-name>
+    <servlet-class>servlet.user.collect.addCollect</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>addCollect</servlet-name>
+    <url-pattern>/addCollect</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>manageCollect</servlet-name>
+    <servlet-class>servlet.user.collect.manageCollect</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>manageCollect</servlet-name>
+    <url-pattern>/manageCollect</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>deleteCollect</servlet-name>
+    <servlet-class>servlet.user.collect.deleteCollect</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>deleteCollect</servlet-name>
+    <url-pattern>/deleteCollect</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>searchCollect</servlet-name>
+    <servlet-class>servlet.user.collect.searchCollect</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>searchCollect</servlet-name>
+    <url-pattern>/searchCollect</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>deleteQues</servlet-name>
+    <servlet-class>servlet.user.question.DeleteQues</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>deleteQues</servlet-name>
+    <url-pattern>/deleteQues</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>UpdateQues</servlet-name>
+    <servlet-class>servlet.user.question.UpdateQues</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdateQues</servlet-name>
+    <url-pattern>/UpdateQues</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>SearchQues</servlet-name>
+    <servlet-class>servlet.user.question.SearchQues</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SearchQues</servlet-name>
+    <url-pattern>/SearchQues</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>ViewQuestion</servlet-name>
+    <servlet-class>servlet.user.question.ViewQuestion</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ViewQuestion</servlet-name>
+    <url-pattern>/ViewQuestion</url-pattern>
+  </servlet-mapping>
 </web-app>

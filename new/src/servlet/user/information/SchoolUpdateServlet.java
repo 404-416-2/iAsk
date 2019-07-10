@@ -44,7 +44,7 @@ public class SchoolUpdateServlet extends HttpServlet {
 		String uid = request.getParameter("id");
 		String text = request.getParameter("text");
 		System.out.println("Update"+text);
-		int quesId = Integer.parseInt(uid);
+		String quesId = uid;
 		String responseText = "";
 	    UserDAO updateQ = new UserDAO();
 		

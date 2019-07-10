@@ -125,7 +125,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		   </div>
 		   <div>
 			  <div class="group">
-			  <form action="SearchAnswer" name="" method="post">
+			  <form action="SearchAnswer" name="" method="get">
 					<input class="searchk" type="text" class="form-control" placeholder="请输入关键字" name="keys">
 					<input type="submit" value="查找">
 					<!--  <img class="searchk1" src="images/search.png" alt="搜索" width="30" height="30">-->
@@ -178,8 +178,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 
 
-		</div>
-		
+		</div>		
 			</div>
 </body>
+
 </html>

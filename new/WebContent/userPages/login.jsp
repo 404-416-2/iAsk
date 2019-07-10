@@ -39,12 +39,12 @@ String path = request.getContextPath();
 </head>
 <body>
 <div style="margin-top: 70px;">
-<form id="loginF" action="/new/login">
+<form id="loginF">
 <div id="part" class="part"> <h>用户名</h><input id="id" name="id" style="height: 28px;width: 263px;margin-left: 10px;"></input></div>
 <div id="" class="part"> <h>密码</h><input id="psd" name="pwd" type="password" style="height: 28px;width: 263px;margin-left: 30px;"></input></div>
 <div style="margin-left: 260px;margin-top: 40px;"></div>
 <input type="submit" class="submit" id="subm" value="登陆">
-</form>
+<form>
 </div>
 <script type="text/javascript">
 	// $(document).ready(function(){

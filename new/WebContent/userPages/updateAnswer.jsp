@@ -8,17 +8,17 @@
 </head>
 <body>
 	<div>
-		<form action="/new/UpdateAnswer" method="post" accept-charset="utf-8" onsubmit="document.charset='utf-8';">
-		问题ID：<input type="text" name="q_id" value=<%=request.getParameter("q_id")%>>
+		<form action="/New/UpdateAnswer" method="post" accept-charset="utf-8" onsubmit="document.charset='utf-8';">
+		问题ID：<input type="text" name="q_id" value=<%=request.getParameter("q_id")%> readonly="readonly">
 		<br>
 		<br>
 		
-		用户ID：<input type="text" name="u_id" value=<%=request.getParameter("u_id")%>>
+		用户ID：<input type="text" name="u_id" value=<%=request.getParameter("u_id")%> readonly="readonly">
 		<br>
 		<br>
 		
 		回答内容：<br>
-		<input type="text" name="update_text" style="width:300px;height:150px;">
+		<input type="text" name="update_text" value=<%=request.getParameter("a_tx")%> style="width:300px;height:150px;">
 		<br><br>
 		<input type="submit" value="提交修改">
 		</form>

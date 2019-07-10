@@ -2,6 +2,7 @@ package utils;
 
 import java.sql.*;
 
+
 public class DBConn {
 	
 		private static DBConn singleton;
@@ -58,7 +59,6 @@ public class DBConn {
 	   
 	   
 	   private Connection conn = null;
-	   private Statement stmt = null;
 	   private ResultSet rs = null;
 
 	   public void startTrans(){
@@ -67,8 +67,8 @@ public class DBConn {
 			   System.out.println("Connecting to database...");
 			   conn = DriverManager.getConnection(DB_URL,USER,PASS);
 			   conn.setAutoCommit(false);
-			   System.out.println("Creating statement...");
-			   stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+//			   System.out.println("Creating statement...");
+//			   stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
 			   System.out.println("transaction is start...");
 	       }catch(SQLException se){
 			   se.printStackTrace();
@@ -77,49 +77,51 @@ public class DBConn {
 		   }
 	   }
 
-	   public void startConn(){
+	   public Connection startConn(){
 		   try{
 			   Class.forName(JDBC_DRIVER);
 			   System.out.println("Connecting to database...");
 			   conn = DriverManager.getConnection(DB_URL,USER,PASS);
 			   conn.setAutoCommit(false);
-			   System.out.println("Creating statement...");
-			   stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+			   
+//			   System.out.println("Creating statement...");
+//			   stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
 			   System.out.println("transaction is start...");
 		   }catch(SQLException se){
 			   se.printStackTrace();
 		   }catch(Exception e){
 			   e.printStackTrace();
 		   }
+		return conn;
 	   }
 	   
-	   public ResultSet query(String sql){
-		   try{
-			   rs = stmt.executeQuery(sql);
-			   return rs;
-		   }catch(SQLException se){
-			   se.printStackTrace();
-		   }catch(Exception e){
-			   e.printStackTrace();
-		   }
-		   return rs;
-	   }
-
-	   public boolean execute(String sql){
-		   try{
-			   int rs = stmt.executeUpdate(sql);
-			   if(rs == 0){
-				   return false;
-			   }else{
-				   return true;
-			   }
-		   }catch(SQLException se){
-			   se.printStackTrace();
-		   }catch(Exception e){
-			   e.printStackTrace();
-		   }
-		   return false;
-	   }
+//	   public ResultSet query(String sql){
+//		   try{
+//			   rs = stmt.executeQuery(sql);
+//			   return rs;
+//		   }catch(SQLException se){
+//			   se.printStackTrace();
+//		   }catch(Exception e){
+//			   e.printStackTrace();
+//		   }
+//		   return rs;
+//	   }
+//
+//	   public boolean execute(String sql){
+//		   try{
+//			   int rs = stmt.executeUpdate(sql);
+//			   if(rs == 0){
+//				   return false;
+//			   }else{
+//				   return true;
+//			   }
+//		   }catch(SQLException se){
+//			   se.printStackTrace();
+//		   }catch(Exception e){
+//			   e.printStackTrace();
+//		   }
+//		   return false;
+//	   }
 
 	   public void commit(){
 		   try{

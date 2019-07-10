@@ -34,7 +34,7 @@ public class ToPersonServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		String u_id = "";
 		if(session != null){
-			if(session.getAttribute("uid")!= null && session.getAttribute("uid")!= ""){
+			if(session.getAttribute("uid")!= null){
 				u_id =(String)session.getAttribute("uid");
 			}
 		}

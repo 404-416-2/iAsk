@@ -49,33 +49,8 @@ public class Index extends HttpServlet {
 		
 		//response data Map
 		Map<String, Object> data = new HashMap<String, Object>();
-		
-		HttpSession session = request.getSession();
-		if(session != null){
 
-			if(session.getAttribute("uid") != null){
-				int uid = (int) session.getAttribute("uid");
-				System.out.println(uid);
-				UserDAO isok = new UserDAO();
-				ResultSet res = isok.selectIsOk(uid);
-				try {
-					if(res.next()){
-						if(res.getInt("is_ok")==1){
-							data.put("isOk", "is");
-						}else{
-							data.put("isOk", "not");
-						}
-					}
-					data.put("login", "ok");
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}else{
-				data.put("login", "fail");
-				data.put("isOk", "not");
-			}
-		}
+		
 	
 		UserQuesDAO test1 = new UserQuesDAO();
 		ArrayList<UserStarBean> topItems = test1.selectLinkUserTopQues();

@@ -32,7 +32,7 @@ public class ViewQuesAnswer extends HttpServlet{
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-			System.out.println((String)req.getAttribute("q_id"));
+			//System.out.println((String)req.getAttribute("q_id"));
 			
 			int qid = Integer.parseInt((String)req.getAttribute("q_id"));
 			

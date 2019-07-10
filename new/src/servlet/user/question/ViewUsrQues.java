@@ -35,8 +35,10 @@ public class ViewUsrQues extends HttpServlet {
 		HttpSession session = req.getSession();
 
 		String uid = (String) session.getAttribute("uid");
+		System.out.println(uid);
 		QuestionDAO questionDAO = new QuestionDAO();
 		ArrayList<QuestionBean> usrAllQues = questionDAO.selectQuesOfUser(uid);
+		System.out.println(uid);
 		System.out.println(usrAllQues.size());
 		req.setAttribute("usrAllQues", usrAllQues);
 		req.getRequestDispatcher("userPages/userQuesList.jsp").forward(req, resp);

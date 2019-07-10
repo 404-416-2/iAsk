@@ -154,11 +154,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <tr>
                 	<td>问题内容</td>
                     <td>提问者</td>
-                    <td>提交时间</td>
-                    <td>回答数量</td>
-                    <td>收藏数量</td>
-                    <td>是否置顶</td>
-                    <td>问题类型</td>
+                    <td>发布时间</td>
                     <td>操作</td>
                 </tr>
             </thead>
@@ -166,25 +162,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
             <c:forEach var="Q" items="${QuestionAll}">
             	<tr>
-                 	<td align="center"   title="${Q.quesText}"  style="max-width: 100px;overflow: hidden; text-overflow:ellipsis;white-space: nowrap">
-                 		${Q.quesText}</td>
+                 	<td>${Q.quesText}</td>
                 	<td>${Q.usrId}</td>
                  	<td>${Q.subTime}</td>
-                 	<td>${Q.follow}</td>
-                 	<td>${Q.starNum}</td>
-                 	<td>
-                 		<c:if test="${Q.isTop > 0}">
-                 			<p>是</p>
-                 		</c:if>
-                 		<c:if test="${Q.isTop < 1}">
-                 			<p>否</p>
-                 		</c:if>
-                 	</td>
-                 	<td>${Q.category}</td>
                  	<td style="padding: 10px;">
                     	<a href="QuestionDeleteServlet?qId=${Q.quesId}"><button class="delete" onclick="del(this)">删除</button></a>
                     	<a href="QuestionTopServlet?qId=${Q.quesId}"><button class="topp" onclick="top(this)" >置顶</button></a>
-                    	<a href="QuestionUntopServlet?qId=${Q.quesId}"><button class="untop" onclick="unt(this)">取消置顶</button></a>
+                    	<a href="QuestionUntopServlet?qId=${Q.quesId}"><button class="untop" onclick="unt(this)">取消</button></a>
                  	</td>
             	</tr>
             </c:forEach>

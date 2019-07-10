@@ -1,7 +1,6 @@
 package dao;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 
 import entity.UserStarBean;
@@ -11,12 +10,14 @@ public class UserQuesDAO {
 //select
 	public ArrayList<UserStarBean> selectLinkUserTopQues() {
 		ArrayList<UserStarBean> quesTop = new ArrayList<UserStarBean>();
-		DBConn jdbc = DBConn.getInstance();
-		jdbc.startConn();
-		ResultSet res = jdbc.query(" select * from qiuwen_question" + " s1,qiuwen_user s3 "
-				+ "where s1.u_id=s3.usr_id order by s1.sub_time desc");
-		if (res != null) {
-			try {
+		try {
+			DBConn jdbc = DBConn.getInstance();
+			Connection connection = jdbc.startConn();
+			PreparedStatement pstmt = connection.prepareStatement(
+					"select * from qiuwen_question s1,qiuwen_user s3 where s1.u_id=s3.usr_id order by s1.sub_time desc");
+			ResultSet res = pstmt.executeQuery();
+			if (res != null) {
+
 				while (res.next()) {
 					UserStarBean ques = new UserStarBean();
 					ques.setQid(res.getInt("q_id"));
@@ -36,23 +37,24 @@ public class UserQuesDAO {
 						quesTop.add(ques);
 					}
 				}
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
 			}
+			jdbc.close();
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-		jdbc.close();
+
 		return quesTop;
 	}
 
 	public ArrayList<UserStarBean> selectLinkUserUnTopQues() {
 		ArrayList<UserStarBean> quesList = new ArrayList<UserStarBean>();
-		DBConn jdbc = DBConn.getInstance();
-		jdbc.startConn();
-		ResultSet res = jdbc.query(" select * from qiuwen_question" + " s1,qiuwen_user s3 "
-				+ "where s1.u_id=s3.usr_id order by s1.sub_time desc");
-		if (res != null) {
-			try {
+		try {
+			DBConn jdbc = DBConn.getInstance();
+			Connection connection = jdbc.startConn();
+			PreparedStatement pstmt = connection.prepareStatement(
+					"select * from qiuwen_question s1,qiuwen_user s3 where s1.u_id=s3.usr_id order by s1.sub_time desc");
+			ResultSet res = pstmt.executeQuery();
+			if (res != null) {
 				while (res.next()) {
 					UserStarBean ques = new UserStarBean();
 					ques.setQid(res.getInt("q_id"));
@@ -72,24 +74,25 @@ public class UserQuesDAO {
 						quesList.add(ques);
 					}
 				}
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
 			}
+			jdbc.close();
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-		jdbc.close();
+
 		return quesList;
 	}
 
 	public ArrayList<UserStarBean> selectBySearch(String searchText) {
 		ArrayList<UserStarBean> quesList = new ArrayList<UserStarBean>();
-		DBConn jdbc = DBConn.getInstance();
-		jdbc.startConn();
-		ResultSet res = jdbc.query(" select * from qiuwen_question" + " s1,qiuwen_userques s2,qiuwen_user s3 "
-				+ "where s1.q_id=s2.q_id and s2.u_id = s3.usr_id and s1.q_text like '%" + searchText
-				+ "%'  order by s1.sub_time desc");
-		if (res != null) {
-			try {
+		try {
+			DBConn jdbc = DBConn.getInstance();
+			Connection connection = jdbc.startConn();
+			PreparedStatement pstmt = connection.prepareStatement(
+					"select * from qiuwen_question s1,qiuwen_userques s2,qiuwen_user s3 where s1.q_id=s2.q_id and s2.u_id = s3.usr_id and s1.q_text like '%?%' order by s1.sub_time desc ");
+			pstmt.setString(1, searchText);
+			ResultSet res = pstmt.executeQuery();
+			if (res != null) {
 				while (res.next()) {
 					UserStarBean ques = new UserStarBean();
 					ques.setQid(res.getInt("q_id"));
@@ -108,24 +111,25 @@ public class UserQuesDAO {
 
 					quesList.add(ques);
 				}
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
 			}
+			jdbc.close();
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-		jdbc.close();
+
 		return quesList;
 	}
 
 	public ArrayList<UserStarBean> selectByCate(String category) {
 		ArrayList<UserStarBean> quesList = new ArrayList<UserStarBean>();
-		DBConn jdbc = DBConn.getInstance();
-		jdbc.startConn();
-		ResultSet res = jdbc.query(" select * from qiuwen_question" + " s1,qiuwen_userques s2,qiuwen_user s3 "
-				+ "where s1.q_id=s2.q_id and s2.u_id = s3.usr_id and s1.category = '" + category
-				+ "'  order by s1.sub_time desc");
-		if (res != null) {
-			try {
+		try {
+			DBConn jdbc = DBConn.getInstance();
+			Connection connection = jdbc.startConn();
+			PreparedStatement pstmt = connection.prepareStatement(
+					"select * from qiuwen_question s1,qiuwen_userques s2,qiuwen_user s3 where s1.q_id=s2.q_id and s2.u_id = s3.usr_id and s1.category = ? order by s1.sub_time desc");
+			pstmt.setString(1, category);
+			ResultSet res = pstmt.executeQuery();
+			if (res != null) {
 				while (res.next()) {
 					UserStarBean ques = new UserStarBean();
 					ques.setQid(res.getInt("q_id"));
@@ -144,23 +148,25 @@ public class UserQuesDAO {
 
 					quesList.add(ques);
 				}
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
 			}
+			jdbc.close();
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-		jdbc.close();
+
 		return quesList;
 	}
 
 	public ArrayList<UserStarBean> selectByCateOth() {
 		ArrayList<UserStarBean> quesList = new ArrayList<UserStarBean>();
-		DBConn jdbc = DBConn.getInstance();
-		jdbc.startConn();
-		ResultSet res = jdbc.query(" select * from qiuwen_question" + " s1,qiuwen_userques s2,qiuwen_user s3 "
-				+ "where s1.q_id=s2.q_id and s2.u_id = s3.usr_id and s1.category != '人文' and s1.category != '计算机'  order by s1.sub_time desc");
-		if (res != null) {
-			try {
+		try {
+			DBConn jdbc = DBConn.getInstance();
+			Connection connection = jdbc.startConn();
+			PreparedStatement pstmt = connection.prepareStatement(
+					"select * from qiuwen_question s1,qiuwen_userques s2,qiuwen_user s3 where s1.q_id=s2.q_id and s2.u_id = s3.usr_id and s1.category != '人文' and s1.category != '计算机' order by s1.sub_time desc");
+			ResultSet res = pstmt.executeQuery();
+
+			if (res != null) {
 				while (res.next()) {
 					UserStarBean ques = new UserStarBean();
 					ques.setQid(res.getInt("q_id"));
@@ -179,12 +185,12 @@ public class UserQuesDAO {
 
 					quesList.add(ques);
 				}
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
 			}
+			jdbc.close();
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-		jdbc.close();
+
 		return quesList;
 	}
 }

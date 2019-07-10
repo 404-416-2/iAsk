@@ -37,10 +37,10 @@ public class ViewUsrAnswer extends HttpServlet{
 		String uid = (String)session.getAttribute("uid");
 		AnswerQuesDao answerQuesDao = new AnswerQuesDao();
 		ArrayList<AnswerquesBean> usrAllAnswers =  answerQuesDao.selectAnswerByUid(uid);
-		System.out.println(usrAllAnswers.size());
-		
+	
+		req.setAttribute("answerNum",usrAllAnswers.size() );
 		req.setAttribute("usrAllAnswer", usrAllAnswers);
-		req.getRequestDispatcher("userPages/userAnswerList.jsp").forward(req, resp);
+		req.getRequestDispatcher("userPages/newUserAnswerList.jsp").forward(req, resp);
 		System.out.println(usrAllAnswers);
 	}
 }

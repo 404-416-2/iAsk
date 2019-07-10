@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,7 +14,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import dao.UserDAO;;
+import dao.UserDAO;
+import utils.ResponseJsonUtils;;
 
 /**
  * Servlet implementation class LoginServlet
@@ -34,7 +37,7 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doPost(request,response);
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
@@ -43,38 +46,34 @@ public class LoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String id = request.getParameter("id");
 		String pwd = request.getParameter("pwd");
-		
-		System.out.println("ID  " +  id);
-		System.out.println("PWD " + pwd);
 
+		Map<String, Object> data = new HashMap<String, Object>();
+		
 		UserDAO login = new UserDAO();
 		ResultSet res = login.selectAccount(id, pwd);
-		String responseText = "";
 		try {
 			if(res.next()){
 				String uid = res.getString("usr_id");
-				String isOk = res.getInt("is_ok") == 1 ? "is":"not";
+				String nickname = res.getString("nickname");
+				int isOk = res.getInt("is_ok");
 				HttpSession session = request.getSession();
 				session.setAttribute("uid", uid);
-				//调试用
-				request.getRequestDispatcher("userPages/home_yyz.jsp").forward(request, response);
+				System.out.println(session.getAttribute("uid"));
 				
-				responseText = "{ \"code\" : \"success\" , "
-								+ "\"isOk\" : \""+isOk+"\"}";
-						System.out.println(responseText);
-				return;
+				data.put("code", "success");
+				data.put("uId", uid);
+				data.put("nickname", nickname);
+				data.put("isOk", isOk);
+				
 			}else{
-				responseText = "{\"code\" : \"fail\"}";
+				data.put("code", "fail");
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println(responseText);
-		response.setContentType("application/json;charset=utf-8");
-		response.setCharacterEncoding("UTF-8");
-		PrintWriter out =response.getWriter() ;
-		out.write(responseText);
-		out.close();
+		
+				
+		ResponseJsonUtils.json(response, data);
 	}
 }

@@ -1,3 +1,4 @@
+<%@page import="javax.persistence.criteria.CriteriaBuilder.In"%>
 <%@ page import="entity.*" %>
 <%@ page language="java" import="java.util.*" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8" %>
@@ -6,6 +7,8 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
+
+   
 <!DOCTYPE html>
 <html>
 <head>
@@ -124,6 +127,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		      <div>
 		    <div class="group">
 			  <form action="SearchAnswer" name="" method="post">
+			  		<input class="searchk" type="text" class="form-control" value=<%= request.getAttribute("q_id") %> name="q_id"> 
 					<input class="searchk" type="text" class="form-control" placeholder="请输入关键字" name="keys">
 					<input type="submit" value="查找">
 					<!--  <img class="searchk1" src="images/search.png" alt="搜索" width="30" height="30">-->
@@ -131,21 +135,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</form>
 				</div>
 				
-		   <div>
-			
-		      <div id="avatar" class="touxiang" class="nav nav-tabs">
-					<div class="dropdown">
-  						<img class="touxiang1" src="./images/tou.JPG" width="60" height="60" alt="头像">
-	  					<div class="dropdown-content">
-	    				<a href="<%=path%>/userManageServlet">账号管理</a>
-	    				<a href="<%=path%>/questionManageServlet">问答管理</a>
-	    				<a href="<%=path%>/adminLogin.jsp">退出登录</a>
-	  					</div>
-					</div>
-
-			  </div>
-			  
-		   </div>
+		 
 		</div>
 		</nav>
 	</div>

@@ -40,12 +40,13 @@ public class UpdateAnswer  extends HttpServlet{
 			String uid = req.getParameter("u_id");
 			String ansText = req.getParameter("update_text");
 			String text = new String(ansText.getBytes("iso-8859-1"),"UTF-8");
+			
 			System.out.println(text);
 			AnswerQuesDao answerQuesDao = new AnswerQuesDao();
 			answerQuesDao.updateAnswerText(qid, uid, text, ansTime);
 			
 			req.setAttribute("q_id",String.valueOf(qid));
 			
-			req.getRequestDispatcher("ViewQuesAnswer").forward(req, resp);
+			req.getRequestDispatcher("ViewUsrAnswer").forward(req, resp);
 	}
 }
