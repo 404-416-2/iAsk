@@ -172,7 +172,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             	<tr>
                  	<td>${Q.usrId}</td>
                 	<td align="center"   title="${Q.quesText}"  style="max-width: 100px;overflow: hidden; text-overflow:ellipsis;white-space: nowrap">
-                		${Q.quesText}</td>
+                		<a href="<%=path%>/ViewQuesAnswer?q_id=${Q.quesId}" >${Q.quesText}</a></td>
                  	<td>${Q.subTime}</td>
                  	<td>${Q.follow}</td>
                  	<td>${Q.starNum}</td>

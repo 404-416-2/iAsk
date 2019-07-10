@@ -40,7 +40,7 @@ public class ViewUsrAnswer extends HttpServlet{
 	
 		req.setAttribute("answerNum",usrAllAnswers.size() );
 		req.setAttribute("usrAllAnswer", usrAllAnswers);
-		req.getRequestDispatcher("userPages/newUserAnswerList.jsp").forward(req, resp);
+		req.getRequestDispatcher("userPages/userAnswerList.jsp").forward(req, resp);
 		System.out.println(usrAllAnswers);
 	}
 }

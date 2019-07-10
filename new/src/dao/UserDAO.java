@@ -44,6 +44,42 @@ public class UserDAO {
 		return users;
 	}
 
+	public UserBean selectByUId(String uid) {
+		DBConn jdbc = DBConn.getInstance();
+		ArrayList<UserBean> users = new ArrayList<>();
+		try {
+
+			Connection connection = jdbc.startConn();
+			PreparedStatement pstmt = connection.prepareStatement("select * from qiuwen_user where usr_id = ?");
+			pstmt.setString(1, uid);
+			ResultSet rs = pstmt.executeQuery();
+
+			if (rs.wasNull()) {
+				System.err.println("未找到此用户");
+				return null;
+			} else {
+				while (rs.next()) {
+					UserBean user = new UserBean();
+					user.setUsrId(rs.getString("usr_id"));
+					user.setNickname(rs.getString("nickname"));
+					user.setText(rs.getString("text"));
+					user.setUsrPwd(rs.getString("usr_pwd"));
+					user.setIsOk(rs.getInt("is_ok"));
+					user.setSex(rs.getInt("sex"));
+					user.setAge(rs.getInt("age"));
+					user.setSchool(rs.getString("school"));
+					users.add(user);
+				}
+				return users.get(0);
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+
+	}
+
 	// 管理员删除某个用户
 	public boolean deleteAccount(String id) {
 		DBConn jdbc = DBConn.getInstance();

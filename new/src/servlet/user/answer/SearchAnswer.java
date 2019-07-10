@@ -39,11 +39,13 @@ public class SearchAnswer extends HttpServlet{
 		
 		String uid = (String) req.getSession().getAttribute("uid");
 		System.out.println(uid);
+		
 		if (keysString.equals("") || keysString == null) {
 			answers = answerQuesDao.selectAnswerByUid(uid);
 		}else {
 			answers = answerQuesDao.selectUserAnswerByText(keysString, uid);
 		}
+		req.setAttribute("answerNum",answers.size() );
 		//System.out.println(answers.size());
 		req.setAttribute("keyAnswers", answers);
 		req.getRequestDispatcher("userPages/SearchAnswerResult.jsp").forward(req, resp);
@@ -75,6 +77,7 @@ public class SearchAnswer extends HttpServlet{
 			answers = answerQuesDao.selectQuesAnswerByText(keysString, Integer.parseInt(qid));
 		}
 		//System.out.println(answers.size());
+		req.setAttribute("answerNum",answers.size() );
 		req.setAttribute("keyAnswers", answers);
 		req.getRequestDispatcher("userPages/SearchAnswerResult.jsp").forward(req, resp);
 		

@@ -39,6 +39,6 @@ public class ViewQuestion extends HttpServlet {
 
 		req.setAttribute("allOfQuestion", quesBeans);
 
-		req.getRequestDispatcher("userPages/questionList.jsp").forward(req, resp);
+		req.getRequestDispatcher("userPages/userQuesList.jsp").forward(req, resp);
 	}
 }

@@ -32,7 +32,8 @@ public class manageCollect extends HttpServlet{
 		
 		CollectDao collectDao = new CollectDao();
 		ArrayList<QuestionBean> collectList = collectDao.selectAllById(uid);
-		req.setAttribute("mycollection", collectList);
+		req.setAttribute("collectNum", collectList.size());
+		req.setAttribute("mycollection",collectList);
 		req.getRequestDispatcher("userPages/questionCollectManage.jsp").forward(req, resp);
 		
 	}

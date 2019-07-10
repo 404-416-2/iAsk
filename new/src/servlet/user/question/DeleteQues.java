@@ -31,7 +31,6 @@ public class DeleteQues extends HttpServlet {
 
 		int qid = Integer.parseInt(req.getParameter("q_id"));
 		String uid = req.getParameter("u_id");
-		System.out.println("执行删除问题" + qid + "提问人" + uid);
 		QuestionDAO questionDAO = new QuestionDAO();
 		questionDAO.deleteQuestion(qid);
 		req.getRequestDispatcher("ViewUsrQues").forward(req, resp);
