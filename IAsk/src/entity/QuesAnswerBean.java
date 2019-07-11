@@ -2,6 +2,7 @@ package entity;
 
 public class QuesAnswerBean {
 	
+	
 	private int q_id = -1;
 	private String u_id = "";
 	private String a_text = "";

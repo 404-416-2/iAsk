@@ -10,6 +10,7 @@ public class UserBean {
 	private String school = "未知学校";
 	private String text = "写下自己擅长的领域吧~";
 
+
 	public void setUsrId(String usr_id){
 		this.usrId = usr_id;
 	}
