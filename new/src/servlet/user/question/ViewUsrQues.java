@@ -37,6 +37,20 @@ public class ViewUsrQues extends HttpServlet {
 		HttpSession session = req.getSession();
 
 		String uid = (String) session.getAttribute("uid");
+		if(uid==null){
+			uid = (String)req.getParameter("uId");
+//		String user = (String)request.getSession().getAttribute("uid");
+			if(uid==null || uid.equals(""))
+			{
+				req.setAttribute("alertInfo", "please login first!");
+				req.setAttribute("jumpUrl", "home");
+				req.getRequestDispatcher("userFriend/alert.jsp").forward(req, resp);
+				return;
+			}
+			else {
+				session.setAttribute("uid", uid);
+			}
+		}
 		UserBean user = new UserBean();
 		UserDAO  udao = new UserDAO();
 		user = udao.selectByUId(uid);

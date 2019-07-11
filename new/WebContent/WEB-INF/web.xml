@@ -343,4 +343,39 @@
 		<servlet-name>ViewQuestion</servlet-name>
 		<url-pattern>/ViewQuestion</url-pattern>
 	</servlet-mapping>
+	
+	<!-- 新主页的注册登录退出 -->
+	<servlet>
+		<servlet-name>GoIntoBBS</servlet-name>
+		<servlet-class>servlet.index.GoIntoBBS</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>GoIntoBBS</servlet-name>
+		<url-pattern>/GoIntoBBS</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>UserLoginServlet</servlet-name>
+		<servlet-class>servlet.admin.user.UserLoginServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>UserLoginServlet</servlet-name>
+		<url-pattern>/userLoginServlet</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>UserLogoutServlet</servlet-name>
+		<servlet-class>servlet.admin.user.UserLogoutServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>UserLogoutServlet</servlet-name>
+		<url-pattern>/userLogoutServlet</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>UserRegisterServlet</servlet-name>
+		<servlet-class>servlet.admin.user.UserRegisterServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>UserRegisterServlet</servlet-name>
+		<url-pattern>/userRegisterServlet</url-pattern>
+	</servlet-mapping>
+	<!-- 新主页的注册登录退出 -->
 </web-app>
