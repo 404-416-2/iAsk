@@ -43,17 +43,13 @@ public class QuestionDAO {
 			}
 		}
 		jdbc.close();
-		for(QuestionBean ques : questions){
-			if(ques.getIsTop()==1){
-				questions1.add(ques);//置顶的一队
-			}else{
-				questions2.add(ques);//没有置顶的一队
+
 			}
 		}
 		for(QuestionBean ques : questions2){
 				questions1.add(ques);//没有置顶的跟在置顶的后面			
 		}
-		return questions1;//返回排序过的队列
+
 	}
 	
 	//管理员删除某个问题

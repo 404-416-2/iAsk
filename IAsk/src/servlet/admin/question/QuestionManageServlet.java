@@ -20,13 +20,11 @@ import dao.QuestionDAO;
 public class QuestionManageServlet extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
-
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		response.setContentType("text/html; charset=UTF-8");
 		QuestionDAO quesManage = new QuestionDAO();
 		ArrayList<QuestionBean> questions = quesManage.selectAll();
-
 		request.setAttribute("QuestionAll", questions);
 		request.getRequestDispatcher("adminPages/adminQuestion.jsp").forward(request, response);
 	}
