@@ -62,6 +62,7 @@ tbody tr {
 button {
 	width: 80px;
 	height: 30px;
+
 }
 </style>
 </head>
@@ -72,7 +73,6 @@ button {
 				$("#tag1").show();
 				$("#tag2").hide();
 			});
-
 			$("#t2").click(function() {
 				$("#tag2").show();
 				$("#tag1").hide();
@@ -84,18 +84,15 @@ button {
 			//alert(temp.parentNode.parentNode);//这个temp.parentNode就是div元素
 			$(temp.parentNode.parentNode.parentNode).remove();
 		}
-
 		function loc(temp) {
 			alert("已锁定");
 			// $($(temp).next("button.unlock")).attr('disabled',"false");
 			// $(temp).attr('disabled',"true");
-
 		};
 		function unl(temp) {
 			alert("解锁");
 			// $($(temp).sblings("button.lock")).attr('disabled',"false");
 			// $(temp).attr('disabled',"true");
-
 		};
 		function top(temp) {
 			alert("已置顶");
