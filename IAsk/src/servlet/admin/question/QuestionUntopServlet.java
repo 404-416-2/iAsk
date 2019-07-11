@@ -40,11 +40,9 @@ public class QuestionUntopServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		String id = request.getParameter("id");
-		int qId = Integer.parseInt(id);
-		
-		QuestionDAO qd = new QuestionDAO();
-		
+		String id = request.getParameter("qId");
+		int qId = Integer.parseInt(id);		
+		QuestionDAO qd = new QuestionDAO();		
 		qd.untopquestion(qId);
 		request.getRequestDispatcher("QuestionManageServlet").forward(request, response);
 	}
