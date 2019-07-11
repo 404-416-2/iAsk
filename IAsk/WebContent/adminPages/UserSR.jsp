@@ -124,24 +124,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		   <div>
 			  <div class="group">
 					<form action="UserSearchServlet" name="" method="post">
-					<input class="searchk" type="text" class="form-control" placeholder="请输入关键字" name="usrId">
-					<input type="submit" value="查找">
-					<!--  <img class="searchk1" src="images/search.png" alt="搜索" width="30" height="30">-->
-				
-			</form>
-				</div>
+						<input class="searchk" type="text" class="form-control" placeholder="请输入关键字" name="usrId">
+						<input type="submit" value="查找">
+						<!--  <img class="searchk1" src="images/search.png" alt="搜索" width="30" height="30">-->				
+					</form>
+			  </div>
 		      <div id="avatar" class="touxiang" class="nav nav-tabs">
 					<div class="dropdown">
   						<img class="touxiang1" src="./images/tou.JPG" width="60" height="60" alt="头像">
 	  					<div class="dropdown-content">
-	    				<a href="<%=path%>/userManageServlet">账号管理</a>
-	    				<a href="<%=path%>/questionManageServlet">问答管理</a>
-	    				<a href="<%=path%>/adminLogin.jsp">退出登录</a>
+	    					<a href="<%=path%>/userManageServlet">账号管理</a>
+	    					<a href="<%=path%>/questionManageServlet">问答管理</a>
+	    					<a href="<%=path%>/adminLogin.jsp">退出登录</a>
 	  					</div>
 					</div>
-
-			  </div>
-			  
+			  </div>			  
 		   </div>
 		</nav>
 	</div>
@@ -157,23 +154,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 </tr>
             </thead>
             <tbody>
-
             <c:forEach var="U" items="${UserAll}">
             	<tr>
                  	<td>${U.usrId}</td>
                 	<td>${U.nickname}</td>
                  	<td>${U.school}</td>
                  	<td style="padding: 10px;">
-                    	<a href="UserDeleteServlet?usrId=${U.usrId}"><button class="delete" onclick="del(this)">删除</button></a>
-                    	<a href="UserLockServlet?usrId=${U.usrId}"><button class="lock" onclick="loc(this)">锁定</button></a>
-                    	<a href="UserUnlockServlet?usrId=${U.usrId}"><button class="unlock" onclick="unl(this)">解锁</button></a>
-                 	
+                    	<a href="UserDeleteServlet?usrId=${U.usrId}">
+                    		<button class="delete" onclick="del(this)">删除</button>
+                    	</a>
+                    	<a href="UserLockServlet?usrId=${U.usrId}">
+                    		<button class="lock" onclick="loc(this)">锁定</button>
+                    	</a>
+                    	<a href="UserUnlockServlet?usrId=${U.usrId}">
+                    		<button class="unlock" onclick="unl(this)">解锁</button>
+                    	</a>                	
                  	</td>
             	</tr>
             </c:forEach>
-
-            </table>
-	
+            </table>	
 		</div>
 	</div>
 </body>

@@ -153,9 +153,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <thead>
                 <tr>
                 	<td>问题内容</td>
-                    <td>提问者</td>
+                    <td>提 问 者</td>
                     <td>发布时间</td>
-                    <td>操作</td>
+                    <td>操  作</td>
                 </tr>
             </thead>
             <tbody>
@@ -166,19 +166,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 	<td>${Q.usrId}</td>
                  	<td>${Q.subTime}</td>
                  	<td style="padding: 10px;">
-                    	<a href="QuestionDeleteServlet?qId=${Q.quesId}"><button class="delete" onclick="del(this)">删除</button></a>
-                    	<a href="QuestionTopServlet?qId=${Q.quesId}"><button class="topp" onclick="top(this)" >置顶</button></a>
-                    	<a href="QuestionUntopServlet?qId=${Q.quesId}"><button class="untop" onclick="unt(this)">取消</button></a>
+                    	<a href="QuestionDeleteServlet?qId=${Q.quesId}">
+                    		<button class="delete" onclick="del(this)">删除</button>
+                    	</a>
+                    	<a href="QuestionTopServlet?qId=${Q.quesId}">
+                    		<button class="topp" onclick="top(this)" >置顶</button>
+                    	</a>
+                    	<a href="QuestionUntopServlet?qId=${Q.quesId}">
+                    		<button class="untop" onclick="unt(this)">取消</button>
+                    	</a>
                  	</td>
             	</tr>
             </c:forEach>
             </tbody>
             </table>
-
-
-
-		</div>
-		
-			</div>
+		</div>		
+</div>
 </body>
 </html>

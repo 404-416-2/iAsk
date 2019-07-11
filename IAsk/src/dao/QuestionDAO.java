@@ -12,6 +12,8 @@ public class QuestionDAO {
 	//获取所有的问题列表，显示在管理员端
 	public ArrayList<QuestionBean> selectAll(){
 		ArrayList<QuestionBean> questions = new ArrayList<QuestionBean>();
+		ArrayList<QuestionBean> questions1 = new ArrayList<QuestionBean>();
+		ArrayList<QuestionBean> questions2 = new ArrayList<QuestionBean>();
 		DBConn jdbc = DBConn.getInstance();
 		jdbc.startConn();
 		ResultSet rs = jdbc.query("select * from qiuwen_question join qiuwen_user on usr_id = u_id;");
@@ -41,7 +43,17 @@ public class QuestionDAO {
 			}
 		}
 		jdbc.close();
-		return questions;
+		for(QuestionBean ques : questions){
+			if(ques.getIsTop()==1){
+				questions1.add(ques);//置顶的一队
+			}else{
+				questions2.add(ques);//没有置顶的一队
+			}
+		}
+		for(QuestionBean ques : questions2){
+				questions1.add(ques);//没有置顶的跟在置顶的后面			
+		}
+		return questions1;//返回排序过的队列
 	}
 	
 	//管理员删除某个问题
@@ -58,6 +70,7 @@ public class QuestionDAO {
 		return rs1 && rs2;
 	}
 	
+	//管理员置顶某个提问
 	public boolean topquestion(int id){
 		DBConn jdbc=DBConn.getInstance();
 		jdbc.startTrans();
@@ -86,7 +99,6 @@ public class QuestionDAO {
 				+ "or usr_id like '%"+id+"%';");
 		if(rs != null){
 			try{
-				
 				while(rs.next()){
 					QuestionBean question = new QuestionBean();
 					question.setAge(rs.getInt("age"));
@@ -120,7 +132,6 @@ public class QuestionDAO {
 		jdbc.startConn();
 		ResultSet rs = jdbc.query("select * from qiuwen_question natural join qiuwen_userques where u_id = "+ uid);
 		if(rs != null){
-			
 			try{
 				while(rs.next()){
 					QuestionBean question = new QuestionBean();
