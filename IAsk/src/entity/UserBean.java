@@ -1,6 +1,7 @@
 package entity;
 
 public class UserBean {
+	
 	private String usrId = "";
 	private String nickname = "";
 	private String usr_pwd = "";
