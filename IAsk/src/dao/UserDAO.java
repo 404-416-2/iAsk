@@ -9,6 +9,7 @@ import entity.UserBean;
 import utils.DBConn;
 
 public class UserDAO {
+	
 	public ArrayList<UserBean> selectAll(){
 		ArrayList<UserBean> users = new ArrayList<UserBean>();
 		DBConn jdbc = DBConn.getInstance();
@@ -19,6 +20,7 @@ public class UserDAO {
 				while(rs.next()){
 					UserBean user = new UserBean();
 					user.setId(rs.getInt("usr_id"));
+					user.setAccount(rs.getString("usr_account"));
 					user.setPwd(rs.getString("usr_pwd"));
 					user.setIsOk(rs.getInt("is_ok"));
 					user.setSex(rs.getInt("sex"));
@@ -34,7 +36,7 @@ public class UserDAO {
 		jdbc.close();
 		return users;
 	}
-
+	
 	public boolean deleteAccount(int id){
 		DBConn jdbc=DBConn.getInstance();
 		jdbc.startTrans();
@@ -45,7 +47,11 @@ public class UserDAO {
 		jdbc.commit();
 		return rs1&&rs2;
 	}
-
+	
+	
+	
+	
+	
 	public boolean lockAccount(int id){
 		DBConn jdbc=DBConn.getInstance();
 		jdbc.startTrans();
@@ -54,7 +60,7 @@ public class UserDAO {
 		jdbc.commit();
 		return rs;
 	}
-
+	
 	public boolean unlockAccount(int id){
 		DBConn jdbc=DBConn.getInstance();
 		jdbc.startTrans();
@@ -63,8 +69,8 @@ public class UserDAO {
 		jdbc.commit();
 		return rs;
 	}
-
-	public ArrayList<UserBean> searchById(int id){
+	
+	public ArrayList<UserBean> searchById(int id){		
 		ArrayList<UserBean> users = new ArrayList<UserBean>();
 		DBConn jdbc = DBConn.getInstance();
 		jdbc.startConn();
@@ -99,7 +105,7 @@ public class UserDAO {
 		jdbc.close();
 		return rs;
 	}
-
+	
 	public ResultSet selectAccount(String account,String pwd){
 		DBConn jdbc = DBConn.getInstance();
 		jdbc.startConn();
@@ -108,7 +114,7 @@ public class UserDAO {
 		jdbc.close();
 		return rs;
 	}
-
+	
 	public boolean insertAccount(String account,String pwd){
 		DBConn jdbc=DBConn.getInstance();
 		jdbc.startTrans();
@@ -117,13 +123,13 @@ public class UserDAO {
 		jdbc.commit();
 		return rs;
 	}
-
+	
 	public boolean updateSchool(int quesId,String text) {
 		DBConn jdbc=DBConn.getInstance();
 		jdbc.startTrans();
 		boolean rs = jdbc.execute(" update qiuwen_user set school = '"+text+"' where usr_id = "+quesId );
 		jdbc.commit();
 		return rs;
-
+		
 	}
 }

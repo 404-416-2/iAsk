@@ -43,21 +43,13 @@ public class QuestionDAO {
 			}
 		}
 		jdbc.close();
-		/**
-		 * 置顶，50--60行
-		 * 史嘉辉
-		 */
-		for(QuestionBean ques : questions){
-			if(ques.getIsTop()==1){
-				questions1.add(ques);//置顶的分一队
-			}else{
-				questions2.add(ques);//没有置顶的分一队
+
 			}
 		}
 		for(QuestionBean ques : questions2){
 				questions1.add(ques);//没有置顶的跟在置顶的后面			
 		}
-		return questions1;//返回置顶过的队列
+
 	}
 	
 	//管理员删除某个问题

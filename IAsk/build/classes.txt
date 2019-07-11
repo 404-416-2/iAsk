@@ -1,0 +1,1 @@
+若出现找不到类的错误，尝试将build文件夹中的所有class文件添加到build path中的External Classes中

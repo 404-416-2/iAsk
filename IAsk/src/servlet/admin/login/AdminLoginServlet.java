@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  * Servlet implementation class LoginServlet
- * @modify shijiahui 20190704
  */
 @WebServlet("/AdminLoginServlet")
 public class AdminLoginServlet extends HttpServlet {

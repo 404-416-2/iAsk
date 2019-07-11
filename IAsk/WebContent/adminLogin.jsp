@@ -32,15 +32,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <body>
   <div class="content">
     <form action="AdminLoginServlet" name="" method="post">
-      <h2 style="font-size:180%" align=center>管理员账户登录</h2>
+      <h2 style="font-size:170%" align=center>管理员账户登录</h2>
       <br>
       <table  align=center>
-	    <tr><td style="font-size:130%;font-family:KaiTi" align=right>账号：</td><td><input style="width:170px;height:20px; border:0;border-radius:5px; " type=text name="id"></td></tr>
+	    <tr><td style="font-size:120%" align=right>账号：</td><td><input type=text name="id"></td></tr>
 	    <tr><td></td></tr>
 	    <tr><td></td></tr>
 	    <tr><td></td></tr>
 	    <tr><td></td></tr>
-	    <tr><td style="font-size:130%;font-family:KaiTi" align=right>密码：</td><td><input style="width:170px;height:20px; border:0;border-radius:5px; " type=password name="password"></td></tr>	
+	    <tr><td style="font-size:120%" align=right>密码：</td><td><input type=password name="password"></td></tr>	
 	    <tr><td></td></tr>
 	    <tr><td></td></tr>
 	    <tr><td></td></tr>
@@ -54,7 +54,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <tr><td></td></tr>
         <tr><td></td></tr>
         <tr><td></td></tr>
-	    <tr><td colspan=2 align=center>	<input type="submit" value="登  录" style="width:250px;height:30px;background:SkyBlue;border:0px;font-size:135%;font-family:KaiTi"></td></tr>		
+	    <tr><td colspan=2 align=center>	<input type="submit" value="登录" style="width:150px;height:30px;background:	#F5FFFA;border:0px;font-size:130%"></td></tr>		
 	  </table>								
 	  <br>
     </form>
