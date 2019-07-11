@@ -20,7 +20,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <link href="<%= path %>/css/feed.css" rel="stylesheet" >
 	<title>ad</title>
 	<style type="text/css">
-		
 		  table
         {   
             float: left;
@@ -44,8 +43,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             font-size: 25px;
             font-weight: bold;
             text-align: center;
-          
-
         }
         table tr th,table tr td {
             border-right: 1px solid #555555 ;
@@ -65,13 +62,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </head>
 <body>
 <script type="text/javascript">
-
 	 	$(document).ready(function(){
 	 	$("#t1").click(function(){
 	 		$("#tag1").show();
 	 		$("#tag2").hide();
 	 	});
-
 	 
 	 	$("#t2").click(function(){
 	 		$("#tag2").show();
@@ -91,8 +86,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	 		alert("已锁定");
 	 		// $($(temp).next("button.unlock")).attr('disabled',"false");
 	 		// $(temp).attr('disabled',"true");
-	 
-
 	 	};
 	 	function unl(temp)
 	 	{
@@ -112,9 +105,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	 		alert("已取消置顶");
 	 		// $($(temp).sblings("button.topp")).attr('disabled',"false");
 	 		// $(temp).attr('disabled',"true");
-	 	};
-
-	
+	 	};	
 </script>
 <div class="header" id="header">
 		<nav class="navbar" role="navigation"  style="height: 105px">
@@ -125,12 +116,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			  <div class="group">
 			  <form action="QuestionSearchServlet" name="" method="post">
 					<input class="searchk" type="text" class="form-control" placeholder="请输入关键字" name="id">
-					<input type="submit" value="查找">
-					<!--  <img class="searchk1" src="images/search.png" alt="搜索" width="30" height="30">-->
-				
-			</form>
-				
-				
+					<input type="submit" value="查找" style="background:#F0FFFF;height:30px;width:55px;border-radius:10px">
+					<!--  <img class="searchk1" src="images/search.png" alt="搜索" width="30" height="30">-->				
+			</form>			
 				</div>
 		      <div id="avatar" class="touxiang" class="nav nav-tabs">
 					<div class="dropdown">
