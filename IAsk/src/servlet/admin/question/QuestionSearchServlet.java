@@ -32,14 +32,12 @@ public class QuestionSearchServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		
 		response.setContentType("text/html; charset=UTF-8");
-		String id = request.getParameter("id");
-		int quesId = Integer.parseInt(id);
-		
+		//String id = request.getParameter("id");
+		String id = new String(request.getParameter("id").getBytes("ISO-8859-1"),"utf-8");
+	    System.out.println(id);
 		QuestionDAO qd = new QuestionDAO();
-		ArrayList<QuestionBean> questions = qd.searchById(quesId);
-
+		ArrayList<QuestionBean> questions = qd.searchById(id);
 		request.setAttribute("QuestionAll", questions);
 		request.getRequestDispatcher("adminPages/QuestionSR.jsp").forward(request, response);
 	}
