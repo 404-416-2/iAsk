@@ -163,7 +163,7 @@ public class UserQuesDAO {
 			DBConn jdbc = DBConn.getInstance();
 			Connection connection = jdbc.startConn();
 			PreparedStatement pstmt = connection.prepareStatement(
-					"select * from qiuwen_question s1,qiuwen_userques s2,qiuwen_user s3 where s1.q_id=s2.q_id and s2.u_id = s3.usr_id and s1.category != '人文' and s1.category != '计算机' order by s1.sub_time desc");
+					"select * from qiuwen_question s1,qiuwen_userques s2,qiuwen_user s3 where s1.q_id=s2.q_id and s2.u_id = s3.usr_id and s1.category != '人文' and s1.category != '计算机'  order by s1.sub_time desc");
 			ResultSet res = pstmt.executeQuery();
 
 			if (res != null) {

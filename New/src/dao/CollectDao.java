@@ -26,12 +26,11 @@ public class CollectDao {
 		try {
 			Connection connection = jdbc.startConn();
 			PreparedStatement pstmt = connection.prepareStatement(
-					"select* from qiuwen_question where q_id in (select q_id from qiuwen_userstar where u_id = ?");
+					"select* from qiuwen_question where q_id in (select q_id from qiuwen_userstar where u_id = ?)");
 			pstmt.setString(1, uid);
 			ResultSet rs = pstmt.executeQuery();
 
 			while (rs.next()) {
-				System.out.println("pppp");
 				QuestionBean questionBean = new QuestionBean();
 
 				questionBean.setQuesId(rs.getInt("q_id"));

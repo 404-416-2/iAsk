@@ -212,8 +212,8 @@
 											<tr>
 												<td align="center" title="${Q.quesText}" style="max-width: 100px;
 														overflow: hidden;	text-overflow: ellipsis; white-space: nowrap">
-														<a href="<%=path%>/ViewQuesAnswer?q_id=${Q.quesId}" >
-													  ${Q.quesText}</a>}</td>
+														<a onclick="return checkLogin()" href="<%=path%>/ViewQuesAnswer?q_id=${Q.quesId}" >
+													  ${Q.quesText} </a></td>
 												<td>${Q.follow}</td>
 												<td>${Q.starNum}</td>
 												<td>${Q.category}</td>
@@ -221,14 +221,16 @@
 												<td style="padding: 10px; width: 25%">
 													<a  class="btn btn-danger btn-icon-split"
 														data-toggle="modal" data-target="#myModal" 
-														data-qid="${Q.quesId}" data-uid="${Q.usrId}">
+														data-qid="${Q.quesId}" data-uid="${Q.usrId}"
+														onclick="return checkLogin()">
 														<span class="icon text-white-50"> 
 															<i class="fas fa-trash"></i>
 														</span> 
 														<span class="text">删除</span>
 													</a>
 													<a  href="userPages/updateQues.jsp?q_id=${Q.quesId}&u_id=${Q.usrId}&q_tx=${Q.quesText}&cate=${Q.category}"
-														class="btn btn-info btn-icon-split">
+														class="btn btn-info btn-icon-split"
+														onclick="return checkLogin()">
 														<span class="icon text-white-50"> 
 															<i class="fas fa-edit"></i>
 														</span> 
@@ -287,7 +289,7 @@
 				<div class="modal-footer">
 					<button class="btn btn-secondary" type="button"
 						data-dismiss="modal">取消</button>
-					<a class="btn btn-primary" href="<%=path%>/UserLogout">退出</a>
+					<a class="btn btn-primary" href="<%=path%>/UserLogoutServlet">退出</a>
 				</div>
 			</div>
 		</div>
@@ -363,7 +365,21 @@
 			$('#qid_del').attr('value',qid);
 			$('#uid_del').attr('value',uid);	
 		});
+		function checkLogin(){ 
+		   　　var log_stat = "<%=session.getAttribute("uid")%>";
+		   　　if (log_stat == null){
+			   alert("please login first!");
+			   console.log("gacha!");
+			   return false;
+		   　　}else{
+			   console.log(log_stat);
+			   return false;
+		   　　}
+		　　}
 	</script>
+　　
+
+	
 	
 
 </body>
