@@ -122,6 +122,9 @@ public class QuestionDAO {
 		return questions;
 	}
 
+
+
+
 	public ArrayList<QuestionBean> selectQuesOfUser(int uid) {
 		ArrayList<QuestionBean> questions = new ArrayList<QuestionBean>();
 		DBConn jdbc = DBConn.getInstance();
